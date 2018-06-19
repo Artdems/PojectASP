@@ -1,0 +1,262 @@
+﻿
+@model WebApplication3.Models.ViewModel.AfficheVehiculeViewModel
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "AjouterVehiculeForm" }))
+{
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <div>
+        <ul class="nav nav-pills ">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" role="tab" aria-controls="principale" href="#principale">Info-principal</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" role="tab" aria-controls="compteur" href="#compteur">Compteur/Date</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" role="tab" aria-controls="messages" href="#messages">Messages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" role="tab" aria-controls="settings" href="#settings">Settings</a>
+            </li>
+        </ul>
+        <!-- Nav tabs --><div class="card">
+            @*<ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#principale" aria-controls="principale" role="tab" data-toggle="tab">Info principal</a></li>
+                    <li role="presentation"><a href="#compteur" aria-controls="compteur" role="tab" data-toggle="tab">Compteur</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                </ul>*@
+            <!-- Tab panes -->
+            <div class="tab-content ">
+                <div role="tabpanel" class="tab-pane active table-responsive" id="principale">
+                    <table class="table table-bordred table-striped" id="CustomerGrid">
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.immat)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.immat)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.modele)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.modele)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.marque)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.marque)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.Designation)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.Designation)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.Num_serie)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.Num_serie)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.num_interne)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.num_interne)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane  table-responsive" id="compteur">
+                    <table class="table table-bordred table-striped" id="CustomerGrid" d>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.compteur_heure)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.compteur_heure)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.compteur_KM)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.compteur_KM)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.date_compteur)
+                            </td>
+                            <td>
+                                <div class="form-group row">
+                                    <div class="col-10">
+
+                                        <input class="form-control" type="datetime-local" value="" id="vehicule_date_compteur" name="vehicule_date_compteur" size="1">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.date_heure)
+                            </td>
+                            <td>
+                                <div class="form-group row">
+                                    <div class="col-10">
+
+                                        <input class="form-control" type="datetime-local" value="" id="vehicule_date_heure" name="vehicule_date_heure" size="1">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.dateEntree)
+                            </td>
+                            <td>
+                                <div class="form-group row">
+                                    <div class="col-10">
+
+                                        <input class="form-control" type="datetime-local" value="" id="vehicule_dateEntree" name="vehicule_dateEntree" size="1">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.date_sortie)
+                            </td>
+                            <td>
+                                <div class="form-group row">
+                                    <div class="col-10">
+
+                                        <input class="form-control" type="datetime-local" value="" id="vehicule_date_sortie" name="vehicule_date_sortie" size="1">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages">
+                    <table class="table table-bordred table-striped" id="CustomerGrid">
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.id_famille_vehicule)
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <select class="form-control" id="vehicule_id_famille_vehicule" name="vehicule_id_famille_vehicule" value="test" size="1">
+                                        @{
+                                            foreach (var fam in Model.familles)
+                                            {
+                                                <option>@fam.libelle_famille_vehicules</option>
+
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.caracteristique)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.caracteristique)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.num_analystique)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.num_analystique)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.actif)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.actif)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.telephone)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.telephone)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.photo)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.photo)
+                            </td>
+                        </tr>
+                    </table>
+                    @*ViewBag.Famille*@
+                </div>
+                <div role="tabpanel" class="tab-pane" id="settings">
+                    <table class="table table-bordred table-striped" id="CustomerGrid">
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.valeur_acquisition)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.valeur_acquisition)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.num_facture)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.num_facture)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.location)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.location)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.vehicule.id_societe)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.vehicule.id_societe)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

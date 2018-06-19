@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Bdd.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Accidents">
+    <Key>
+      <PropertyRef Name="id_accident" />
+    </Key>
+    <Property Name="id_accident" Type="int" Nullable="false" />
+    <Property Name="id_personnel" Type="int" />
+    <Property Name="id_vehicule" Type="int" />
+    <Property Name="date_saisie" Type="date" />
+    <Property Name="id_type_suivi" Type="int" />
+    <Property Name="id_detail_accident" Type="int" />
+    <Property Name="id_doc" Type="int" />
+    <Property Name="path_document" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Affectations">
+    <Key>
+      <PropertyRef Name="id_affectation" />
+    </Key>
+    <Property Name="id_affectation" Type="int" Nullable="false" />
+    <Property Name="date_du" Type="date" />
+    <Property Name="date_au" Type="date" />
+    <Property Name="id_personnel" Type="int" />
+    <Property Name="id_vehicule" Type="int" />
+    <Property Name="id_equipe" Type="int" />
+    <Property Name="id_equipement" Type="int" />
+    <Property Name="chef_equipe" Type="nvarchar" MaxLength="1" />
+    <Property Name="type_affecte" Type="nvarchar" MaxLength="1" />
+    <Property Name="id_texte" Type="int" />
+  </EntityType>
+  <EntityType Name="Controles_Vehicules">
+    <Key>
+      <PropertyRef Name="id_controle" />
+      <PropertyRef Name="id_vehicule" />
+    </Key>
+    <Property Name="id_controle" Type="int" Nullable="false" />
+    <Property Name="id_vehicule" Type="int" Nullable="false" />
+    <Property Name="date_obtention" Type="date" />
+    <Property Name="organisme" Type="varchar" MaxLength="255" />
+    <Property Name="cout" Type="float" />
+    <Property Name="date_recyclage" Type="date" />
+    <Property Name="organisme_recyclage" Type="varchar" MaxLength="255" />
+    <Property Name="cout_recyclage" Type="float" />
+    <Property Name="description" Type="nvarchar" MaxLength="2048" />
+    <Property Name="tri" Type="int" />
+    <Property Name="id_valeur_liste" Type="int" />
+  </EntityType>
+  <EntityType Name="Details_Accidents">
+    <Key>
+      <PropertyRef Name="id_detail_accident" />
+    </Key>
+    <Property Name="id_detail_accident" Type="int" Nullable="false" />
+    <Property Name="jour_semaine" Type="nvarchar" MaxLength="50" />
+    <Property Name="date_accident" Type="date" />
+    <Property Name="heure" Type="nvarchar" MaxLength="50" />
+    <Property Name="horraire_jour" Type="nvarchar" MaxLength="50" />
+    <Property Name="lieu" Type="nvarchar" MaxLength="255" />
+    <Property Name="circonstances" Type="nvarchar" MaxLength="2048" />
+    <Property Name="siege_lesions" Type="nvarchar" MaxLength="255" />
+    <Property Name="nature_lesions" Type="nvarchar" MaxLength="255" />
+    <Property Name="hopital" Type="nvarchar" MaxLength="1048" />
+    <Property Name="id_consequences_accident" Type="int" />
+    <Property Name="id_temoin" Type="int" />
+    <Property Name="temoins" Type="nvarchar" MaxLength="2048" />
+    <Property Name="rapport_police" Type="nvarchar" MaxLength="1" />
+    <Property Name="cause_tiers" Type="nvarchar" MaxLength="1" />
+    <Property Name="nom_tiers" Type="nvarchar" MaxLength="2048" />
+    <Property Name="arret_travail" Type="nvarchar" MaxLength="1" />
+    <Property Name="assurance_tiers" Type="nvarchar" MaxLength="1048" />
+    <Property Name="id_type_constat_accident" Type="int" />
+    <Property Name="date_constat" Type="date" />
+    <Property Name="heure_constat" Type="nvarchar" MaxLength="50" />
+    <Property Name="constat_employeur" Type="nvarchar" MaxLength="1" />
+    <Property Name="constat_preposes" Type="nvarchar" MaxLength="1" />
+    <Property Name="constat_victime" Type="nvarchar" MaxLength="1" />
+    <Property Name="numero" Type="nvarchar" MaxLength="50" />
+    <Property Name="rapport_parqui" Type="nvarchar" MaxLength="1048" />
+    <Property Name="autre_victime" Type="nvarchar" MaxLength="1" />
+    <Property Name="id_vehicule" Type="int" />
+    <Property Name="activite" Type="nvarchar" MaxLength="255" />
+    <Property Name="path_document" Type="nvarchar" MaxLength="1048" />
+  </EntityType>
+  <EntityType Name="Doc_Lignes_Four">
+    <Key>
+      <PropertyRef Name="id_ligne" />
+    </Key>
+    <Property Name="id_ligne" Type="int" Nullable="false" />
+    <Property Name="id_doc" Type="int" />
+    <Property Name="id_vehicule" Type="int" />
+    <Property Name="id_famille" Type="int" />
+    <Property Name="description" Type="nvarchar" MaxLength="1048" />
+    <Property Name="quantite" Type="float" />
+    <Property Name="prix_unitaire" Type="float" />
+    <Property Name="montant" Type="float" />
+    <Property Name="id_equipement" Type="int" />
+    <Property Name="date_du" Type="date" />
+    <Property Name="date_au" Type="date" />
+    <Property Name="kilometre" Type="int" />
+    <Property Name="kilometres_parcourus" Type="int" />
+    <Property Name="id_personnel" Type="int" />
+  </EntityType>
+  <EntityType Name="Familles_Vehicules">
+    <Key>
+      <PropertyRef Name="id_famille_vehicule" />
+    </Key>
+    <Property Name="id_famille_vehicule" Type="int" Nullable="false" />
+    <Property Name="code_famille_vehicule" Type="nvarchar" MaxLength="50" />
+    <Property Name="libelle_famille_vehicules" Type="nvarchar" MaxLength="50" />
+    <Property Name="actif" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Restrictions_Medicales">
+    <Key>
+      <PropertyRef Name="id_restriction" />
+    </Key>
+    <Property Name="id_restriction" Type="int" Nullable="false" />
+    <Property Name="id_suivi_medical" Type="int" />
+    <Property Name="description" Type="nvarchar" MaxLength="2048" />
+    <Property Name="date_du" Type="date" />
+    <Property Name="date_au" Type="date" />
+    <Property Name="id_personnel" Type="int" />
+  </EntityType>
+  <EntityType Name="Suivis_Medicals">
+    <Key>
+      <PropertyRef Name="id_suivi_medical" />
+    </Key>
+    <Property Name="id_suivi_medical" Type="int" Nullable="false" />
+    <Property Name="id_personnel" Type="int" />
+    <Property Name="id_type_suivi" Type="int" />
+    <Property Name="date_arret" Type="date" />
+    <Property Name="date_reprise" Type="date" />
+    <Property Name="nbjour_arret" Type="int" />
+    <Property Name="date_visite" Type="date" />
+    <Property Name="date_renou" Type="date" />
+    <Property Name="nature_lesion" Type="nvarchar" MaxLength="1048" />
+    <Property Name="siege_lesion" Type="nvarchar" MaxLength="2048" />
+    <Property Name="cause" Type="nvarchar" MaxLength="1048" />
+    <Property Name="cote_lesion" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_accident" Type="int" />
+    <Property Name="restrictions" Type="nvarchar" MaxLength="1" />
+    <Property Name="lesions" Type="nvarchar" MaxLength="1" />
+    <Property Name="explication" Type="nvarchar" MaxLength="2048" />
+    <Property Name="nbjour_arret_ouvres" Type="int" />
+  </EntityType>
+  <EntityType Name="Vehicules">
+    <Key>
+      <PropertyRef Name="id_vehicule" />
+    </Key>
+    <Property Name="id_vehicule" Type="int" Nullable="false" />
+    <Property Name="num_interne" Type="nvarchar" MaxLength="255" />
+    <Property Name="Designation" Type="nvarchar" MaxLength="255" />
+    <Property Name="immat" Type="nvarchar" MaxLength="50" />
+    <Property Name="Num_serie" Type="nvarchar" MaxLength="1048" />
+    <Property Name="compteur_heure" Type="int" />
+    <Property Name="compteur_KM" Type="int" />
+    <Property Name="date_compteur" Type="date" />
+    <Property Name="date_heure" Type="date" />
+    <Property Name="marque" Type="nvarchar" MaxLength="50" />
+    <Property Name="caracteristique" Type="nvarchar" MaxLength="255" />
+    <Property Name="modele" Type="nvarchar" MaxLength="50" />
+    <Property Name="num_analystique" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_famille_vehicule" Type="int" />
+    <Property Name="actif" Type="nvarchar" MaxLength="1" />
+    <Property Name="telephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="dateEntree" Type="date" />
+    <Property Name="photo" Type="nvarchar" MaxLength="1048" />
+    <Property Name="valeur_acquisition" Type="float" />
+    <Property Name="num_facture" Type="nvarchar" MaxLength="50" />
+    <Property Name="location" Type="nvarchar" MaxLength="1" />
+    <Property Name="date_sortie" Type="date" />
+    <Property Name="id_societe" Type="int" />
+  </EntityType>
+  <EntityType Name="Vehicules_Compteurs">
+    <Key>
+      <PropertyRef Name="id_compteur" />
+    </Key>
+    <Property Name="id_compteur" Type="int" Nullable="false" />
+    <Property Name="id_vehicule" Type="int" Nullable="false" />
+    <Property Name="type_compteur" Type="nvarchar" MaxLength="1" />
+    <Property Name="date_compteur" Type="datetime" />
+    <Property Name="val_compteur" Type="bigint" />
+  </EntityType>
+  <Association Name="FK_Accidents_Details_Accidents">
+    <End Role="Details_Accidents" Type="Self.Details_Accidents" Multiplicity="0..1" />
+    <End Role="Accidents" Type="Self.Accidents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Details_Accidents">
+        <PropertyRef Name="id_detail_accident" />
+      </Principal>
+      <Dependent Role="Accidents">
+        <PropertyRef Name="id_detail_accident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accidents_Travail_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+    <End Role="Details_Accidents" Type="Self.Details_Accidents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Details_Accidents">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accidents_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+    <End Role="Accidents" Type="Self.Accidents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Accidents">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Affectations_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+    <End Role="Affectations" Type="Self.Affectations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Affectations">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Controles_Vehicules_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="1" />
+    <End Role="Controles_Vehicules" Type="Self.Controles_Vehicules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Controles_Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doc_Lignes_Four_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+    <End Role="Doc_Lignes_Four" Type="Self.Doc_Lignes_Four" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Doc_Lignes_Four">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Restrictions_Medicales_Suivis_Medicals">
+    <End Role="Suivis_Medicals" Type="Self.Suivis_Medicals" Multiplicity="0..1" />
+    <End Role="Restrictions_Medicales" Type="Self.Restrictions_Medicales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suivis_Medicals">
+        <PropertyRef Name="id_suivi_medical" />
+      </Principal>
+      <Dependent Role="Restrictions_Medicales">
+        <PropertyRef Name="id_suivi_medical" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Suivis_Medicals_Accidents_Travail">
+    <End Role="Details_Accidents" Type="Self.Details_Accidents" Multiplicity="0..1" />
+    <End Role="Suivis_Medicals" Type="Self.Suivis_Medicals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Details_Accidents">
+        <PropertyRef Name="id_detail_accident" />
+      </Principal>
+      <Dependent Role="Suivis_Medicals">
+        <PropertyRef Name="id_accident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicules_Compteurs_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="1" />
+    <End Role="Vehicules_Compteurs" Type="Self.Vehicules_Compteurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Vehicules_Compteurs">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicules_Familles_Vehicules">
+    <End Role="Familles_Vehicules" Type="Self.Familles_Vehicules" Multiplicity="0..1" />
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Familles_Vehicules">
+        <PropertyRef Name="id_famille_vehicule" />
+      </Principal>
+      <Dependent Role="Vehicules">
+        <PropertyRef Name="id_famille_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BddStoreContainer">
+    <EntitySet Name="Accidents" EntityType="Self.Accidents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Affectations" EntityType="Self.Affectations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Controles_Vehicules" EntityType="Self.Controles_Vehicules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Details_Accidents" EntityType="Self.Details_Accidents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doc_Lignes_Four" EntityType="Self.Doc_Lignes_Four" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Familles_Vehicules" EntityType="Self.Familles_Vehicules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Restrictions_Medicales" EntityType="Self.Restrictions_Medicales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Suivis_Medicals" EntityType="Self.Suivis_Medicals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicules" EntityType="Self.Vehicules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicules_Compteurs" EntityType="Self.Vehicules_Compteurs" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Accidents_Details_Accidents" Association="Self.FK_Accidents_Details_Accidents">
+      <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+      <End Role="Accidents" EntitySet="Accidents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accidents_Travail_Vehicules" Association="Self.FK_Accidents_Travail_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accidents_Vehicules" Association="Self.FK_Accidents_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Accidents" EntitySet="Accidents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Affectations_Vehicules" Association="Self.FK_Affectations_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Affectations" EntitySet="Affectations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Controles_Vehicules_Vehicules" Association="Self.FK_Controles_Vehicules_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Controles_Vehicules" EntitySet="Controles_Vehicules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doc_Lignes_Four_Vehicules" Association="Self.FK_Doc_Lignes_Four_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Doc_Lignes_Four" EntitySet="Doc_Lignes_Four" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Restrictions_Medicales_Suivis_Medicals" Association="Self.FK_Restrictions_Medicales_Suivis_Medicals">
+      <End Role="Suivis_Medicals" EntitySet="Suivis_Medicals" />
+      <End Role="Restrictions_Medicales" EntitySet="Restrictions_Medicales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Suivis_Medicals_Accidents_Travail" Association="Self.FK_Suivis_Medicals_Accidents_Travail">
+      <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+      <End Role="Suivis_Medicals" EntitySet="Suivis_Medicals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicules_Compteurs_Vehicules" Association="Self.FK_Vehicules_Compteurs_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Vehicules_Compteurs" EntitySet="Vehicules_Compteurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicules_Familles_Vehicules" Association="Self.FK_Vehicules_Familles_Vehicules">
+      <End Role="Familles_Vehicules" EntitySet="Familles_Vehicules" />
+      <End Role="Vehicules" EntitySet="Vehicules" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

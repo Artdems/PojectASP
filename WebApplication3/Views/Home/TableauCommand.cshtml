@@ -1,0 +1,34 @@
+﻿@model List<WebApplication3.Models.Doc_Entete_Four>
+
+<h5>Commande Fournisseur</h5>
+ <table class="table table-bordred table-striped">
+
+    <thead>
+        <tr>
+
+            <th>numero</th>
+            <th>Référence</th>
+            <th>montant</th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.numero</td>
+                <td>@item.reference_doc</td>
+                <td>@item.montant_ht</td>
+
+            </tr>
+        }
+
+
+
+
+
+    </tbody>
+
+</table>

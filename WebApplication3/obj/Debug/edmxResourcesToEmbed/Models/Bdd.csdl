@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Bdd" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Accidents">
+    <Key>
+      <PropertyRef Name="id_accident" />
+    </Key>
+    <Property Name="id_accident" Type="Int32" Nullable="false" />
+    <Property Name="id_personnel" Type="Int32" />
+    <Property Name="id_vehicule" Type="Int32" />
+    <Property Name="date_saisie" Type="DateTime" Precision="0" />
+    <Property Name="id_type_suivi" Type="Int32" />
+    <Property Name="id_detail_accident" Type="Int32" />
+    <Property Name="id_doc" Type="Int32" />
+    <Property Name="path_document" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Details_Accidents" Relationship="Self.FK_Accidents_Details_Accidents" FromRole="Accidents" ToRole="Details_Accidents" />
+    <NavigationProperty Name="Vehicules" Relationship="Self.FK_Accidents_Vehicules" FromRole="Accidents" ToRole="Vehicules" />
+  </EntityType>
+  <EntityType Name="Affectations">
+    <Key>
+      <PropertyRef Name="id_affectation" />
+    </Key>
+    <Property Name="id_affectation" Type="Int32" Nullable="false" />
+    <Property Name="date_du" Type="DateTime" Precision="0" />
+    <Property Name="date_au" Type="DateTime" Precision="0" />
+    <Property Name="id_personnel" Type="Int32" />
+    <Property Name="id_vehicule" Type="Int32" />
+    <Property Name="id_equipe" Type="Int32" />
+    <Property Name="id_equipement" Type="Int32" />
+    <Property Name="chef_equipe" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="type_affecte" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="id_texte" Type="Int32" />
+    <NavigationProperty Name="Vehicules" Relationship="Self.FK_Affectations_Vehicules" FromRole="Affectations" ToRole="Vehicules" />
+  </EntityType>
+  <EntityType Name="Controles_Vehicules">
+    <Key>
+      <PropertyRef Name="id_controle" />
+      <PropertyRef Name="id_vehicule" />
+    </Key>
+    <Property Name="id_controle" Type="Int32" Nullable="false" />
+    <Property Name="id_vehicule" Type="Int32" Nullable="false" />
+    <Property Name="date_obtention" Type="DateTime" Precision="0" />
+    <Property Name="organisme" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cout" Type="Double" />
+    <Property Name="date_recyclage" Type="DateTime" Precision="0" />
+    <Property Name="organisme_recyclage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cout_recyclage" Type="Double" />
+    <Property Name="description" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="tri" Type="Int32" />
+    <Property Name="id_valeur_liste" Type="Int32" />
+    <NavigationProperty Name="Vehicules" Relationship="Self.FK_Controles_Vehicules_Vehicules" FromRole="Controles_Vehicules" ToRole="Vehicules" />
+  </EntityType>
+  <EntityType Name="Details_Accidents">
+    <Key>
+      <PropertyRef Name="id_detail_accident" />
+    </Key>
+    <Property Name="id_detail_accident" Type="Int32" Nullable="false" />
+    <Property Name="jour_semaine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="date_accident" Type="DateTime" Precision="0" />
+    <Property Name="heure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="horraire_jour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lieu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="circonstances" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="siege_lesions" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="nature_lesions" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hopital" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+    <Property Name="id_consequences_accident" Type="Int32" />
+    <Property Name="id_temoin" Type="Int32" />
+    <Property Name="temoins" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="rapport_police" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="cause_tiers" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="nom_tiers" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="arret_travail" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="assurance_tiers" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+    <Property Name="id_type_constat_accident" Type="Int32" />
+    <Property Name="date_constat" Type="DateTime" Precision="0" />
+    <Property Name="heure_constat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="constat_employeur" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="constat_preposes" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="constat_victime" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="rapport_parqui" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+    <Property Name="autre_victime" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="id_vehicule" Type="Int32" />
+    <Property Name="activite" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="path_document" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Accidents" Relationship="Self.FK_Accidents_Details_Accidents" FromRole="Details_Accidents" ToRole="Accidents" />
+    <NavigationProperty Name="Vehicules" Relationship="Self.FK_Accidents_Travail_Vehicules" FromRole="Details_Accidents" ToRole="Vehicules" />
+    <NavigationProperty Name="Suivis_Medicals" Relationship="Self.FK_Suivis_Medicals_Accidents_Travail" FromRole="Details_Accidents" ToRole="Suivis_Medicals" />
+  </EntityType>
+  <EntityType Name="Doc_Lignes_Four">
+    <Key>
+      <PropertyRef Name="id_ligne" />
+    </Key>
+    <Property Name="id_ligne" Type="Int32" Nullable="false" />
+    <Property Name="id_doc" Type="Int32" />
+    <Property Name="id_vehicule" Type="Int32" />
+    <Property Name="id_famille" Type="Int32" />
+    <Property Name="description" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+    <Property Name="quantite" Type="Double" />
+    <Property Name="prix_unitaire" Type="Double" />
+    <Property Name="montant" Type="Double" />
+    <Property Name="id_equipement" Type="Int32" />
+    <Property Name="date_du" Type="DateTime" Precision="0" />
+    <Property Name="date_au" Type="DateTime" Precision="0" />
+    <Property Name="kilometre" Type="Int32" />
+    <Property Name="kilometres_parcourus" Type="Int32" />
+    <Property Name="id_personnel" Type="Int32" />
+    <NavigationProperty Name="Vehicules" Relationship="Self.FK_Doc_Lignes_Four_Vehicules" FromRole="Doc_Lignes_Four" ToRole="Vehicules" />
+  </EntityType>
+  <EntityType Name="Familles_Vehicules">
+    <Key>
+      <PropertyRef Name="id_famille_vehicule" />
+    </Key>
+    <Property Name="id_famille_vehicule" Type="Int32" Nullable="false" />
+    <Property Name="code_famille_vehicule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="libelle_famille_vehicules" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="actif" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Vehicules" Relationship="Self.FK_Vehicules_Familles_Vehicules" FromRole="Familles_Vehicules" ToRole="Vehicules" />
+  </EntityType>
+  <EntityType Name="Restrictions_Medicales">
+    <Key>
+      <PropertyRef Name="id_restriction" />
+    </Key>
+    <Property Name="id_restriction" Type="Int32" Nullable="false" />
+    <Property Name="id_suivi_medical" Type="Int32" />
+    <Property Name="description" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="date_du" Type="DateTime" Precision="0" />
+    <Property Name="date_au" Type="DateTime" Precision="0" />
+    <Property Name="id_personnel" Type="Int32" />
+    <NavigationProperty Name="Suivis_Medicals" Relationship="Self.FK_Restrictions_Medicales_Suivis_Medicals" FromRole="Restrictions_Medicales" ToRole="Suivis_Medicals" />
+  </EntityType>
+  <EntityType Name="Suivis_Medicals">
+    <Key>
+      <PropertyRef Name="id_suivi_medical" />
+    </Key>
+    <Property Name="id_suivi_medical" Type="Int32" Nullable="false" />
+    <Property Name="id_personnel" Type="Int32" />
+    <Property Name="id_type_suivi" Type="Int32" />
+    <Property Name="date_arret" Type="DateTime" Precision="0" />
+    <Property Name="date_reprise" Type="DateTime" Precision="0" />
+    <Property Name="nbjour_arret" Type="Int32" />
+    <Property Name="date_visite" Type="DateTime" Precision="0" />
+    <Property Name="date_renou" Type="DateTime" Precision="0" />
+    <Property Name="nature_lesion" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+    <Property Name="siege_lesion" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="cause" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+    <Property Name="cote_lesion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_accident" Type="Int32" />
+    <Property Name="restrictions" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="lesions" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="explication" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="nbjour_arret_ouvres" Type="Int32" />
+    <NavigationProperty Name="Details_Accidents" Relationship="Self.FK_Suivis_Medicals_Accidents_Travail" FromRole="Suivis_Medicals" ToRole="Details_Accidents" />
+    <NavigationProperty Name="Restrictions_Medicales" Relationship="Self.FK_Restrictions_Medicales_Suivis_Medicals" FromRole="Suivis_Medicals" ToRole="Restrictions_Medicales" />
+  </EntityType>
+  <EntityType Name="Vehicules">
+    <Key>
+      <PropertyRef Name="id_vehicule" />
+    </Key>
+    <Property Name="id_vehicule" Type="Int32" Nullable="false" />
+    <Property Name="num_interne" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Designation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="immat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Num_serie" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+    <Property Name="compteur_heure" Type="Int32" />
+    <Property Name="compteur_KM" Type="Int32" />
+    <Property Name="date_compteur" Type="DateTime" Precision="0" />
+    <Property Name="date_heure" Type="DateTime" Precision="0" />
+    <Property Name="marque" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="caracteristique" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="modele" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="num_analystique" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_famille_vehicule" Type="Int32" />
+    <Property Name="actif" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dateEntree" Type="DateTime" Precision="0" />
+    <Property Name="photo" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+    <Property Name="valeur_acquisition" Type="Double" />
+    <Property Name="num_facture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="location" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="date_sortie" Type="DateTime" Precision="0" />
+    <Property Name="id_societe" Type="Int32" />
+    <NavigationProperty Name="Accidents" Relationship="Self.FK_Accidents_Vehicules" FromRole="Vehicules" ToRole="Accidents" />
+    <NavigationProperty Name="Affectations" Relationship="Self.FK_Affectations_Vehicules" FromRole="Vehicules" ToRole="Affectations" />
+    <NavigationProperty Name="Controles_Vehicules" Relationship="Self.FK_Controles_Vehicules_Vehicules" FromRole="Vehicules" ToRole="Controles_Vehicules" />
+    <NavigationProperty Name="Details_Accidents" Relationship="Self.FK_Accidents_Travail_Vehicules" FromRole="Vehicules" ToRole="Details_Accidents" />
+    <NavigationProperty Name="Doc_Lignes_Four" Relationship="Self.FK_Doc_Lignes_Four_Vehicules" FromRole="Vehicules" ToRole="Doc_Lignes_Four" />
+    <NavigationProperty Name="Familles_Vehicules" Relationship="Self.FK_Vehicules_Familles_Vehicules" FromRole="Vehicules" ToRole="Familles_Vehicules" />
+    <NavigationProperty Name="Vehicules_Compteurs" Relationship="Self.FK_Vehicules_Compteurs_Vehicules" FromRole="Vehicules" ToRole="Vehicules_Compteurs" />
+  </EntityType>
+  <EntityType Name="Vehicules_Compteurs">
+    <Key>
+      <PropertyRef Name="id_compteur" />
+    </Key>
+    <Property Name="id_compteur" Type="Int32" Nullable="false" />
+    <Property Name="id_vehicule" Type="Int32" Nullable="false" />
+    <Property Name="type_compteur" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="date_compteur" Type="DateTime" Precision="3" />
+    <Property Name="val_compteur" Type="Int64" />
+    <NavigationProperty Name="Vehicules" Relationship="Self.FK_Vehicules_Compteurs_Vehicules" FromRole="Vehicules_Compteurs" ToRole="Vehicules" />
+  </EntityType>
+  <Association Name="FK_Accidents_Details_Accidents">
+    <End Role="Details_Accidents" Type="Self.Details_Accidents" Multiplicity="0..1" />
+    <End Role="Accidents" Type="Self.Accidents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Details_Accidents">
+        <PropertyRef Name="id_detail_accident" />
+      </Principal>
+      <Dependent Role="Accidents">
+        <PropertyRef Name="id_detail_accident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accidents_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+    <End Role="Accidents" Type="Self.Accidents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Accidents">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Affectations_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+    <End Role="Affectations" Type="Self.Affectations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Affectations">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Controles_Vehicules_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="1" />
+    <End Role="Controles_Vehicules" Type="Self.Controles_Vehicules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Controles_Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accidents_Travail_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+    <End Role="Details_Accidents" Type="Self.Details_Accidents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Details_Accidents">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Suivis_Medicals_Accidents_Travail">
+    <End Role="Details_Accidents" Type="Self.Details_Accidents" Multiplicity="0..1" />
+    <End Role="Suivis_Medicals" Type="Self.Suivis_Medicals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Details_Accidents">
+        <PropertyRef Name="id_detail_accident" />
+      </Principal>
+      <Dependent Role="Suivis_Medicals">
+        <PropertyRef Name="id_accident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doc_Lignes_Four_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+    <End Role="Doc_Lignes_Four" Type="Self.Doc_Lignes_Four" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Doc_Lignes_Four">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicules_Familles_Vehicules">
+    <End Role="Familles_Vehicules" Type="Self.Familles_Vehicules" Multiplicity="0..1" />
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Familles_Vehicules">
+        <PropertyRef Name="id_famille_vehicule" />
+      </Principal>
+      <Dependent Role="Vehicules">
+        <PropertyRef Name="id_famille_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Restrictions_Medicales_Suivis_Medicals">
+    <End Role="Suivis_Medicals" Type="Self.Suivis_Medicals" Multiplicity="0..1" />
+    <End Role="Restrictions_Medicales" Type="Self.Restrictions_Medicales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suivis_Medicals">
+        <PropertyRef Name="id_suivi_medical" />
+      </Principal>
+      <Dependent Role="Restrictions_Medicales">
+        <PropertyRef Name="id_suivi_medical" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicules_Compteurs_Vehicules">
+    <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="1" />
+    <End Role="Vehicules_Compteurs" Type="Self.Vehicules_Compteurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicules">
+        <PropertyRef Name="id_vehicule" />
+      </Principal>
+      <Dependent Role="Vehicules_Compteurs">
+        <PropertyRef Name="id_vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SAGA_GASQUETEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accidents" EntityType="Self.Accidents" />
+    <EntitySet Name="Affectations" EntityType="Self.Affectations" />
+    <EntitySet Name="Controles_Vehicules" EntityType="Self.Controles_Vehicules" />
+    <EntitySet Name="Details_Accidents" EntityType="Self.Details_Accidents" />
+    <EntitySet Name="Doc_Lignes_Four" EntityType="Self.Doc_Lignes_Four" />
+    <EntitySet Name="Familles_Vehicules" EntityType="Self.Familles_Vehicules" />
+    <EntitySet Name="Restrictions_Medicales" EntityType="Self.Restrictions_Medicales" />
+    <EntitySet Name="Suivis_Medicals" EntityType="Self.Suivis_Medicals" />
+    <EntitySet Name="Vehicules" EntityType="Self.Vehicules" />
+    <EntitySet Name="Vehicules_Compteurs" EntityType="Self.Vehicules_Compteurs" />
+    <AssociationSet Name="FK_Accidents_Details_Accidents" Association="Self.FK_Accidents_Details_Accidents">
+      <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+      <End Role="Accidents" EntitySet="Accidents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accidents_Vehicules" Association="Self.FK_Accidents_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Accidents" EntitySet="Accidents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Affectations_Vehicules" Association="Self.FK_Affectations_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Affectations" EntitySet="Affectations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Controles_Vehicules_Vehicules" Association="Self.FK_Controles_Vehicules_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Controles_Vehicules" EntitySet="Controles_Vehicules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accidents_Travail_Vehicules" Association="Self.FK_Accidents_Travail_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Suivis_Medicals_Accidents_Travail" Association="Self.FK_Suivis_Medicals_Accidents_Travail">
+      <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+      <End Role="Suivis_Medicals" EntitySet="Suivis_Medicals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doc_Lignes_Four_Vehicules" Association="Self.FK_Doc_Lignes_Four_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Doc_Lignes_Four" EntitySet="Doc_Lignes_Four" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicules_Familles_Vehicules" Association="Self.FK_Vehicules_Familles_Vehicules">
+      <End Role="Familles_Vehicules" EntitySet="Familles_Vehicules" />
+      <End Role="Vehicules" EntitySet="Vehicules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Restrictions_Medicales_Suivis_Medicals" Association="Self.FK_Restrictions_Medicales_Suivis_Medicals">
+      <End Role="Suivis_Medicals" EntitySet="Suivis_Medicals" />
+      <End Role="Restrictions_Medicales" EntitySet="Restrictions_Medicales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicules_Compteurs_Vehicules" Association="Self.FK_Vehicules_Compteurs_Vehicules">
+      <End Role="Vehicules" EntitySet="Vehicules" />
+      <End Role="Vehicules_Compteurs" EntitySet="Vehicules_Compteurs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

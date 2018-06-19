@@ -1,0 +1,204 @@
+﻿@model List<WebApplication3.Models.Fournisseurs>
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-sm-9 col-md-9">
+    <script src="~/Scripts/jquery-1.12.1.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <link href="~/Scripts/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <div class="container ">
+        <div class="row">
+
+
+                <div class="col-md-12">
+
+
+
+
+                    <h4>Tableau de Fournisseur</h4>
+                    <div>
+                        <div style="position: relative;" >
+
+                            <button type="button" class="btn btn-primary btn-lg" data-action="Ajouter" data-type="Fournisseur" data-toggle="modal" data-target="#GetModal" id="NewIDC">Ajouter un Fournisseur</button>
+                            <table class="table table-bordred table-striped tableFournisseur" id="CustomerGrid">
+
+                                <thead style="position: sticky;">
+                                    <tr>
+
+                                        <th><input type="checkbox" id="checkall" /></th>
+                                        <th>code</th>
+                                        <th>Nom</th>
+                                        <th>ville</th>
+                                        <th>telephone</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <tr class="fournisseur" id="tr@(item.id_fournisseur)" data-id="@(item.id_fournisseur)">
+                                            <td><input type="checkbox" class="checkthis" /></td>
+                                            <td>@item.code_fournisseur</td>
+                                            <td>@item.nom</td>
+                                            <td>@item.ville</td>
+                                            <td>@item.telephone1</td>
+                                            <td>
+                                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                                    <button class="btn btn-primary btn-xs" id="@(item.id_fournisseur)" data-action="Editer" data-type="Fournisseur" data-toggle="modal" data-target="#GetModal">
+                                                        <span class="glyphicon glyphicon-pencil">
+
+                                                        </span>
+                                                    </button>
+
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                    <button class="btn btn-danger btn-xs" id="@(item.id_fournisseur)" data-action="Suprimer" data-type="Fournisseur" data-toggle="modal" data-target="#GetModal">
+                                                        <span class="glyphicon glyphicon-trash">
+
+                                                        </span>
+                                                    </button>
+                                                </p>
+                                            </td>
+
+                                        </tr>
+                                    }
+
+
+
+
+
+                                </tbody>
+
+                            </table>
+                            <div class="clearfix"></div>
+                            <ul class="pagination pull-right">
+                                @if (ViewBag.Page == ViewBag.PageMin)
+                                {
+                                    <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                                    <li class="active"><a href="/Home/TableauFournisseur/@(ViewBag.Page)" id="@(ViewBag.Page)">@ViewBag.Page</a></li>
+                                    <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+1)" id="@(ViewBag.Page+1)">@(ViewBag.Page + 1)</a></li>
+                                    <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+2)" id="@(ViewBag.Page+2)">@(ViewBag.Page + 2)</a></li>
+                                    <li class="disabled"><a href="#">...</a></li>
+                                    <li><a href="/Home/TableauFournisseur/@(ViewBag.PageMax)" id="@(ViewBag.PageMax)">@(ViewBag.PageMax)</a></li>
+                                }
+                                else if (ViewBag.Page == ViewBag.PageMax)
+                                {
+                                    <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-1)" id="@(ViewBag.Page-1)"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                                    <li><a href="/Home/TableauFournisseur/@(ViewBag.PageMin)" id="@(ViewBag.PageMin)">@(ViewBag.PageMin)</a></li>
+                                    <li class="disabled"><a href="#">...</a></li>
+                                    <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-2)" id="@(ViewBag.Page-2)">@(ViewBag.Page - 2)</a></li>
+                                    <li><a href="@(ViewBag.Page-1)" id="@(ViewBag.Page-1)">@(ViewBag.Page - 1)</a></li>
+                                    <li class="active"><a href="/Home/TableauFournisseur/@(ViewBag.Page)" id="@(ViewBag.Page)">@ViewBag.Page</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-1)" id="@(ViewBag.Page-1)"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                                    if (ViewBag.Page > ViewBag.PageMin + 2)
+                                    {
+                                        if (ViewBag.Page < ViewBag.PageMax - 2)
+                                        {
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.PageMin)" id="@(ViewBag.PageMin)">@(ViewBag.PageMin)</a></li>
+                                            <li class="disabled"><a href="#">...</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-2)" id="@(ViewBag.Page-2)">@(ViewBag.Page - 2)</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-1)" id="@(ViewBag.Page-1)">@(ViewBag.Page - 1)</a></li>
+                                            <li class="active"><a href="/Home/TableauFournisseur/@(ViewBag.Page)" id="@(ViewBag.Page)">@ViewBag.Page</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+1)" id="@(ViewBag.Page+1)">@(ViewBag.Page + 1)</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+2)" id="@(ViewBag.Page+2)">@(ViewBag.Page + 2)</a></li>
+                                            <li class="disabled"><a href="#">...</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.PageMax)" id="@(ViewBag.PageMax)">@(ViewBag.PageMax)</a></li>
+                                        }
+                                        else
+                                        {
+                                            if (ViewBag.Page == ViewBag.PageMax - 2)
+                                            {
+                                                <li><a href="/Home/TableauFournisseur/@(ViewBag.PageMin)" id="@(ViewBag.PageMin)">@(ViewBag.PageMin)</a></li>
+                                                <li class="disabled"><a href="#">...</a></li>
+                                                <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-2)" id="@(ViewBag.Page-2)">@(ViewBag.Page - 2)</a></li>
+                                                <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-1)" id="@(ViewBag.Page-1)">@(ViewBag.Page - 1)</a></li>
+                                                <li class="active"><a href="/Home/TableauFournisseur/@(ViewBag.Page)" id="@(ViewBag.Page)">@ViewBag.Page</a></li>
+                                                <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+1)" id="@(ViewBag.Page+1)">@(ViewBag.Page + 1)</a></li>
+                                                <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+2)" id="@(ViewBag.Page+2)">@(ViewBag.Page + 2)</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a href="/Home/TableauFournisseur/@(ViewBag.PageMin)" id="@(ViewBag.PageMin)">@(ViewBag.PageMin)</a></li>
+                                                <li class="disabled"><a href="#">...</a></li>
+                                                <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-2)" id="@(ViewBag.Page-2)">@(ViewBag.Page - 2)</a></li>
+                                                <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-1)" id="@(ViewBag.Page-1)">@(ViewBag.Page - 1)</a></li>
+                                                <li class="active"><a href="/Home/TableauFournisseur/@(ViewBag.Page)" id="@(ViewBag.Page)">@ViewBag.Page</a></li>
+                                                <li><a href="/Home/TableauFournisseur/@(ViewBag.PageMax)" id="@(ViewBag.PageMax)">@(ViewBag.PageMax)</a></li>
+
+                                            }
+
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        if (ViewBag.Page == ViewBag.PageMin + 2)
+                                        {
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-2)" id="@(ViewBag.Page-2)">@(ViewBag.Page - 2)</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.Page-1)" id="@(ViewBag.Page-1)">@(ViewBag.Page - 1)</a></li>
+                                            <li class="active"><a href="/Home/TableauFournisseur/@(ViewBag.Page)" id="@(ViewBag.Page)">@ViewBag.Page</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+1)" id="@(ViewBag.Page+1)">@(ViewBag.Page + 1)</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+2)" id="@(ViewBag.Page+2)">@(ViewBag.Page + 2)</a></li>
+                                            <li class="disabled"><a href="#">...</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.PageMax)" id="@(ViewBag.PageMax)">@(ViewBag.PageMax)</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.PageMin)" id="@(ViewBag.PageMin)">@(ViewBag.PageMin)</a></li>
+                                            <li class="active"><a href="#" onclick="nav(@(ViewBag.Page) )" id="@(ViewBag.Page)">@ViewBag.Page</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+1)" id="@(ViewBag.Page+1)">@(ViewBag.Page + 1)</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+2)" id="@(ViewBag.Page+2)">@(ViewBag.Page + 2)</a></li>
+                                            <li class="disabled"><a href="#">...</a></li>
+                                            <li><a href="/Home/TableauFournisseur/@(ViewBag.PageMax)" id="@(ViewBag.PageMax)">@(ViewBag.PageMax)</a></li>
+                                        }
+
+                                    }
+                                }
+                                @if (ViewBag.Page == ViewBag.PageMax)
+                                {
+                                    <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Home/TableauFournisseur/@(ViewBag.Page+1)" id="@(ViewBag.Page+1)"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                                }
+
+                            </ul>
+
+                        </div>
+                        <div id="resultaFournisseur" class="table-responsive tableCommand">
+                            
+                        </div>
+                    </div>
+
+                </div>
+           
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <script>
+        var search = document.getElementById('searchform');
+        search.action = '/Home/RechercheFournisseur/1';
+    </script>
+    @Html.Partial("Modal/ModalVehicule")
+</div>
+
+
+
+

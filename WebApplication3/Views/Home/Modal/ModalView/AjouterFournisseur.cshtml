@@ -1,0 +1,183 @@
+﻿
+@model WebApplication3.Models.ViewModel.AfficheFournisseurViewModel
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "AjouterFournisseurForm" }))
+{
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <div>
+        <ul class="nav nav-pills ">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" role="tab" aria-controls="principale" href="#principale">Info-principal</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" role="tab" aria-controls="compteur" href="#adresse">Adresse</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" role="tab" aria-controls="messages" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" role="tab" aria-controls="settings" href="#compte">Compte</a>
+            </li>
+        </ul>
+        <!-- Nav tabs --><div class="card">
+            @*<ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#principale" aria-controls="principale" role="tab" data-toggle="tab">Info principal</a></li>
+                    <li role="presentation"><a href="#compteur" aria-controls="compteur" role="tab" data-toggle="tab">Compteur</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                </ul>*@
+            <!-- Tab panes -->
+            <div class="tab-content ">
+                <div role="tabpanel" class="tab-pane active table-responsive" id="principale">
+                    <table class="table table-bordred table-striped" id="CustomerGrid">
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.nom)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.nom)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.code_fournisseur)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.code_fournisseur)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.id_fournisseur)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.id_famille_fournisseur)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane  table-responsive" id="adresse">
+                    <table class="table table-bordred table-striped" id="CustomerGrid" d>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.adresse1)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.adresse1)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.adresse2)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.adresse2)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.ville)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.ville)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.code_postal)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.code_postal)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.pays)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.pays)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="contact">
+                    <table class="table table-bordred table-striped" id="CustomerGrid">
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.contact)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.contact)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.telephone1)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.telephone1)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.telephone2)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.telephone2)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.telecopie)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.telecopie)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.email)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.email)
+                            </td>
+                        </tr>
+                    </table>
+                    @*ViewBag.Famille*@
+                </div>
+                <div role="tabpanel" class="tab-pane" id="compte">
+                    <table class="table table-bordred table-striped" id="CustomerGrid">
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.compte_auxiliaire)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.compte_auxiliaire)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.compte_client)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.compte_client)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.fournisseur.compte_collectif)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.fournisseur.compte_collectif)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+                                            }

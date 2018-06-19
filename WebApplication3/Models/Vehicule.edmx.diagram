@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8895d1d406c64ce6acf5b43710622bfd" Name="Diagram1">
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Familles_Vehicules" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Vehicules" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Vehicules_Familles_Vehicules" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Affectations" Width="1.5" PointX="8.25" PointY="11.625" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Controles_Vehicules" Width="1.5" PointX="5.25" PointY="19.25" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Details_Accidents" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Doc_Lignes_Four" Width="1.5" PointX="5.25" PointY="6.125" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Vehicules_Compteurs" Width="1.5" PointX="5.25" PointY="23.375" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Affectations_Vehicules" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Controles_Vehicules_Vehicules" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Accidents_Travail_Vehicules" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Vehicules" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Vehicules_Compteurs_Vehicules" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Accidents" Width="1.5" PointX="10.5" PointY="13.25" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Suivis_Medicals" Width="1.5" PointX="7.5" PointY="16.25" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Accidents_Details_Accidents" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Accidents_Vehicules" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Suivis_Medicals_Accidents_Travail" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Restrictions_Medicales" Width="1.5" PointX="9.75" PointY="17.375" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Restrictions_Medicales_Suivis_Medicals" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Doc_Entete_Four" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Fournisseurs" Width="1.5" PointX="0.75" PointY="2.625" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Doc_Entete_Four_Fournisseurs" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Doc_Entete_Four" />
+        <EntityTypeShape EntityType="SAGA_GASQUETModel.Equipements" Width="1.5" PointX="3" PointY="18.875" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Affectations_Equipements" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Equipements" />
+        <AssociationConnector Association="SAGA_GASQUETModel.FK_Equipements_Fournisseurs" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

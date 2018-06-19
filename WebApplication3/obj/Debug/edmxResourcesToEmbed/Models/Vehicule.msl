@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SAGA_GASQUETModelStoreContainer" CdmEntityContainer="SAGA_GASQUETEntities">
+    <EntitySetMapping Name="Familles_Vehicules">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Familles_Vehicules">
+        <MappingFragment StoreEntitySet="Familles_Vehicules">
+          <ScalarProperty Name="id_famille_vehicule" ColumnName="id_famille_vehicule" />
+          <ScalarProperty Name="code_famille_vehicule" ColumnName="code_famille_vehicule" />
+          <ScalarProperty Name="libelle_famille_vehicules" ColumnName="libelle_famille_vehicules" />
+          <ScalarProperty Name="actif" ColumnName="actif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicules">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Vehicules">
+        <MappingFragment StoreEntitySet="Vehicules">
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="num_interne" ColumnName="num_interne" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="immat" ColumnName="immat" />
+          <ScalarProperty Name="Num_serie" ColumnName="Num_serie" />
+          <ScalarProperty Name="compteur_heure" ColumnName="compteur_heure" />
+          <ScalarProperty Name="compteur_KM" ColumnName="compteur_KM" />
+          <ScalarProperty Name="date_compteur" ColumnName="date_compteur" />
+          <ScalarProperty Name="date_heure" ColumnName="date_heure" />
+          <ScalarProperty Name="marque" ColumnName="marque" />
+          <ScalarProperty Name="caracteristique" ColumnName="caracteristique" />
+          <ScalarProperty Name="modele" ColumnName="modele" />
+          <ScalarProperty Name="num_analystique" ColumnName="num_analystique" />
+          <ScalarProperty Name="id_famille_vehicule" ColumnName="id_famille_vehicule" />
+          <ScalarProperty Name="actif" ColumnName="actif" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="dateEntree" ColumnName="dateEntree" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="valeur_acquisition" ColumnName="valeur_acquisition" />
+          <ScalarProperty Name="num_facture" ColumnName="num_facture" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="date_sortie" ColumnName="date_sortie" />
+          <ScalarProperty Name="id_societe" ColumnName="id_societe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Affectations">
+      <EntityTypeMapping TypeName="IsTypeOf(SAGA_GASQUETModel.Affectations)">
+        <MappingFragment StoreEntitySet="Affectations">
+          <ScalarProperty Name="id_affectation" ColumnName="id_affectation" />
+          <ScalarProperty Name="id_texte" ColumnName="id_texte" />
+          <ScalarProperty Name="type_affecte" ColumnName="type_affecte" />
+          <ScalarProperty Name="chef_equipe" ColumnName="chef_equipe" />
+          <ScalarProperty Name="id_equipement" ColumnName="id_equipement" />
+          <ScalarProperty Name="id_equipe" ColumnName="id_equipe" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+          <ScalarProperty Name="date_au" ColumnName="date_au" />
+          <ScalarProperty Name="date_du" ColumnName="date_du" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Controles_Vehicules">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Controles_Vehicules">
+        <MappingFragment StoreEntitySet="Controles_Vehicules">
+          <ScalarProperty Name="id_valeur_liste" ColumnName="id_valeur_liste" />
+          <ScalarProperty Name="tri" ColumnName="tri" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="cout_recyclage" ColumnName="cout_recyclage" />
+          <ScalarProperty Name="organisme_recyclage" ColumnName="organisme_recyclage" />
+          <ScalarProperty Name="date_recyclage" ColumnName="date_recyclage" />
+          <ScalarProperty Name="cout" ColumnName="cout" />
+          <ScalarProperty Name="organisme" ColumnName="organisme" />
+          <ScalarProperty Name="date_obtention" ColumnName="date_obtention" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="id_controle" ColumnName="id_controle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Details_Accidents">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Details_Accidents">
+        <MappingFragment StoreEntitySet="Details_Accidents">
+          <ScalarProperty Name="path_document" ColumnName="path_document" />
+          <ScalarProperty Name="activite" ColumnName="activite" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="autre_victime" ColumnName="autre_victime" />
+          <ScalarProperty Name="rapport_parqui" ColumnName="rapport_parqui" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="constat_victime" ColumnName="constat_victime" />
+          <ScalarProperty Name="constat_preposes" ColumnName="constat_preposes" />
+          <ScalarProperty Name="constat_employeur" ColumnName="constat_employeur" />
+          <ScalarProperty Name="heure_constat" ColumnName="heure_constat" />
+          <ScalarProperty Name="date_constat" ColumnName="date_constat" />
+          <ScalarProperty Name="id_type_constat_accident" ColumnName="id_type_constat_accident" />
+          <ScalarProperty Name="assurance_tiers" ColumnName="assurance_tiers" />
+          <ScalarProperty Name="arret_travail" ColumnName="arret_travail" />
+          <ScalarProperty Name="nom_tiers" ColumnName="nom_tiers" />
+          <ScalarProperty Name="cause_tiers" ColumnName="cause_tiers" />
+          <ScalarProperty Name="rapport_police" ColumnName="rapport_police" />
+          <ScalarProperty Name="temoins" ColumnName="temoins" />
+          <ScalarProperty Name="id_temoin" ColumnName="id_temoin" />
+          <ScalarProperty Name="id_consequences_accident" ColumnName="id_consequences_accident" />
+          <ScalarProperty Name="hopital" ColumnName="hopital" />
+          <ScalarProperty Name="nature_lesions" ColumnName="nature_lesions" />
+          <ScalarProperty Name="siege_lesions" ColumnName="siege_lesions" />
+          <ScalarProperty Name="circonstances" ColumnName="circonstances" />
+          <ScalarProperty Name="lieu" ColumnName="lieu" />
+          <ScalarProperty Name="horraire_jour" ColumnName="horraire_jour" />
+          <ScalarProperty Name="heure" ColumnName="heure" />
+          <ScalarProperty Name="date_accident" ColumnName="date_accident" />
+          <ScalarProperty Name="jour_semaine" ColumnName="jour_semaine" />
+          <ScalarProperty Name="id_detail_accident" ColumnName="id_detail_accident" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doc_Lignes_Four">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Doc_Lignes_Four">
+        <MappingFragment StoreEntitySet="Doc_Lignes_Four">
+          <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+          <ScalarProperty Name="kilometres_parcourus" ColumnName="kilometres_parcourus" />
+          <ScalarProperty Name="kilometre" ColumnName="kilometre" />
+          <ScalarProperty Name="date_au" ColumnName="date_au" />
+          <ScalarProperty Name="date_du" ColumnName="date_du" />
+          <ScalarProperty Name="id_equipement" ColumnName="id_equipement" />
+          <ScalarProperty Name="montant" ColumnName="montant" />
+          <ScalarProperty Name="prix_unitaire" ColumnName="prix_unitaire" />
+          <ScalarProperty Name="quantite" ColumnName="quantite" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id_famille" ColumnName="id_famille" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="id_doc" ColumnName="id_doc" />
+          <ScalarProperty Name="id_ligne" ColumnName="id_ligne" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicules_Compteurs">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Vehicules_Compteurs">
+        <MappingFragment StoreEntitySet="Vehicules_Compteurs">
+          <ScalarProperty Name="val_compteur" ColumnName="val_compteur" />
+          <ScalarProperty Name="date_compteur" ColumnName="date_compteur" />
+          <ScalarProperty Name="type_compteur" ColumnName="type_compteur" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="id_compteur" ColumnName="id_compteur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accidents">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Accidents">
+        <MappingFragment StoreEntitySet="Accidents">
+          <ScalarProperty Name="path_document" ColumnName="path_document" />
+          <ScalarProperty Name="id_doc" ColumnName="id_doc" />
+          <ScalarProperty Name="id_detail_accident" ColumnName="id_detail_accident" />
+          <ScalarProperty Name="id_type_suivi" ColumnName="id_type_suivi" />
+          <ScalarProperty Name="date_saisie" ColumnName="date_saisie" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+          <ScalarProperty Name="id_accident" ColumnName="id_accident" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suivis_Medicals">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Suivis_Medicals">
+        <MappingFragment StoreEntitySet="Suivis_Medicals">
+          <ScalarProperty Name="nbjour_arret_ouvres" ColumnName="nbjour_arret_ouvres" />
+          <ScalarProperty Name="explication" ColumnName="explication" />
+          <ScalarProperty Name="lesions" ColumnName="lesions" />
+          <ScalarProperty Name="restrictions" ColumnName="restrictions" />
+          <ScalarProperty Name="id_accident" ColumnName="id_accident" />
+          <ScalarProperty Name="cote_lesion" ColumnName="cote_lesion" />
+          <ScalarProperty Name="cause" ColumnName="cause" />
+          <ScalarProperty Name="siege_lesion" ColumnName="siege_lesion" />
+          <ScalarProperty Name="nature_lesion" ColumnName="nature_lesion" />
+          <ScalarProperty Name="date_renou" ColumnName="date_renou" />
+          <ScalarProperty Name="date_visite" ColumnName="date_visite" />
+          <ScalarProperty Name="nbjour_arret" ColumnName="nbjour_arret" />
+          <ScalarProperty Name="date_reprise" ColumnName="date_reprise" />
+          <ScalarProperty Name="date_arret" ColumnName="date_arret" />
+          <ScalarProperty Name="id_type_suivi" ColumnName="id_type_suivi" />
+          <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+          <ScalarProperty Name="id_suivi_medical" ColumnName="id_suivi_medical" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restrictions_Medicales">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Restrictions_Medicales">
+        <MappingFragment StoreEntitySet="Restrictions_Medicales">
+          <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+          <ScalarProperty Name="date_au" ColumnName="date_au" />
+          <ScalarProperty Name="date_du" ColumnName="date_du" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id_suivi_medical" ColumnName="id_suivi_medical" />
+          <ScalarProperty Name="id_restriction" ColumnName="id_restriction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doc_Entete_Four">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Doc_Entete_Four">
+        <MappingFragment StoreEntitySet="Doc_Entete_Four">
+          <ScalarProperty Name="type_prix" ColumnName="type_prix" />
+          <ScalarProperty Name="montant_MO" ColumnName="montant_MO" />
+          <ScalarProperty Name="type_depense" ColumnName="type_depense" />
+          <ScalarProperty Name="id_type_intervention" ColumnName="id_type_intervention" />
+          <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+          <ScalarProperty Name="montant_ht" ColumnName="montant_ht" />
+          <ScalarProperty Name="date_doc" ColumnName="date_doc" />
+          <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="reference_doc" ColumnName="reference_doc" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="id_doc" ColumnName="id_doc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fournisseurs">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Fournisseurs">
+        <MappingFragment StoreEntitySet="Fournisseurs">
+          <ScalarProperty Name="OKCarburant" ColumnName="OKCarburant" />
+          <ScalarProperty Name="id_famille_fournisseur" ColumnName="id_famille_fournisseur" />
+          <ScalarProperty Name="compte_collectif" ColumnName="compte_collectif" />
+          <ScalarProperty Name="compte_auxiliaire" ColumnName="compte_auxiliaire" />
+          <ScalarProperty Name="actif" ColumnName="actif" />
+          <ScalarProperty Name="compte_client" ColumnName="compte_client" />
+          <ScalarProperty Name="carte" ColumnName="carte" />
+          <ScalarProperty Name="import" ColumnName="import" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telephone2" ColumnName="telephone2" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="pays" ColumnName="pays" />
+          <ScalarProperty Name="telecopie" ColumnName="telecopie" />
+          <ScalarProperty Name="telephone1" ColumnName="telephone1" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="code_postal" ColumnName="code_postal" />
+          <ScalarProperty Name="adresse2" ColumnName="adresse2" />
+          <ScalarProperty Name="adresse1" ColumnName="adresse1" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="code_fournisseur" ColumnName="code_fournisseur" />
+          <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipements">
+      <EntityTypeMapping TypeName="SAGA_GASQUETModel.Equipements">
+        <MappingFragment StoreEntitySet="Equipements">
+          <ScalarProperty Name="id_societe" ColumnName="id_societe" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="date_limite" ColumnName="date_limite" />
+          <ScalarProperty Name="id_controleur" ColumnName="id_controleur" />
+          <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+          <ScalarProperty Name="etat" ColumnName="etat" />
+          <ScalarProperty Name="prix_acquisition" ColumnName="prix_acquisition" />
+          <ScalarProperty Name="date_achat" ColumnName="date_achat" />
+          <ScalarProperty Name="equipe_tempo" ColumnName="equipe_tempo" />
+          <ScalarProperty Name="actif" ColumnName="actif" />
+          <ScalarProperty Name="id_famille_equipement" ColumnName="id_famille_equipement" />
+          <ScalarProperty Name="modele" ColumnName="modele" />
+          <ScalarProperty Name="caractéristique" ColumnName="caractéristique" />
+          <ScalarProperty Name="marque" ColumnName="marque" />
+          <ScalarProperty Name="num_serie" ColumnName="num_serie" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="id_equipement" ColumnName="id_equipement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

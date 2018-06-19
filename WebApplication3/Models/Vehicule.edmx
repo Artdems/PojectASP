@@ -1,0 +1,1328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SAGA_GASQUETModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accidents">
+          <Key>
+            <PropertyRef Name="id_accident" />
+          </Key>
+          <Property Name="id_accident" Type="int" Nullable="false" />
+          <Property Name="id_personnel" Type="int" />
+          <Property Name="id_vehicule" Type="int" />
+          <Property Name="date_saisie" Type="date" />
+          <Property Name="id_type_suivi" Type="int" />
+          <Property Name="id_detail_accident" Type="int" />
+          <Property Name="id_doc" Type="int" />
+          <Property Name="path_document" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Affectations">
+          <Key>
+            <PropertyRef Name="id_affectation" />
+          </Key>
+          <Property Name="id_affectation" Type="int" Nullable="false" />
+          <Property Name="date_du" Type="date" />
+          <Property Name="date_au" Type="date" />
+          <Property Name="id_personnel" Type="int" />
+          <Property Name="id_vehicule" Type="int" />
+          <Property Name="id_equipe" Type="int" />
+          <Property Name="id_equipement" Type="int" />
+          <Property Name="chef_equipe" Type="nvarchar" MaxLength="1" />
+          <Property Name="type_affecte" Type="nvarchar" MaxLength="1" />
+          <Property Name="id_texte" Type="int" />
+        </EntityType>
+        <EntityType Name="Controles_Vehicules">
+          <Key>
+            <PropertyRef Name="id_controle" />
+            <PropertyRef Name="id_vehicule" />
+          </Key>
+          <Property Name="id_controle" Type="int" Nullable="false" />
+          <Property Name="id_vehicule" Type="int" Nullable="false" />
+          <Property Name="date_obtention" Type="date" />
+          <Property Name="organisme" Type="varchar" MaxLength="255" />
+          <Property Name="cout" Type="float" />
+          <Property Name="date_recyclage" Type="date" />
+          <Property Name="organisme_recyclage" Type="varchar" MaxLength="255" />
+          <Property Name="cout_recyclage" Type="float" />
+          <Property Name="description" Type="nvarchar" MaxLength="2048" />
+          <Property Name="tri" Type="int" />
+          <Property Name="id_valeur_liste" Type="int" />
+        </EntityType>
+        <EntityType Name="Details_Accidents">
+          <Key>
+            <PropertyRef Name="id_detail_accident" />
+          </Key>
+          <Property Name="id_detail_accident" Type="int" Nullable="false" />
+          <Property Name="jour_semaine" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_accident" Type="date" />
+          <Property Name="heure" Type="nvarchar" MaxLength="50" />
+          <Property Name="horraire_jour" Type="nvarchar" MaxLength="50" />
+          <Property Name="lieu" Type="nvarchar" MaxLength="255" />
+          <Property Name="circonstances" Type="nvarchar" MaxLength="2048" />
+          <Property Name="siege_lesions" Type="nvarchar" MaxLength="255" />
+          <Property Name="nature_lesions" Type="nvarchar" MaxLength="255" />
+          <Property Name="hopital" Type="nvarchar" MaxLength="1048" />
+          <Property Name="id_consequences_accident" Type="int" />
+          <Property Name="id_temoin" Type="int" />
+          <Property Name="temoins" Type="nvarchar" MaxLength="2048" />
+          <Property Name="rapport_police" Type="nvarchar" MaxLength="1" />
+          <Property Name="cause_tiers" Type="nvarchar" MaxLength="1" />
+          <Property Name="nom_tiers" Type="nvarchar" MaxLength="2048" />
+          <Property Name="arret_travail" Type="nvarchar" MaxLength="1" />
+          <Property Name="assurance_tiers" Type="nvarchar" MaxLength="1048" />
+          <Property Name="id_type_constat_accident" Type="int" />
+          <Property Name="date_constat" Type="date" />
+          <Property Name="heure_constat" Type="nvarchar" MaxLength="50" />
+          <Property Name="constat_employeur" Type="nvarchar" MaxLength="1" />
+          <Property Name="constat_preposes" Type="nvarchar" MaxLength="1" />
+          <Property Name="constat_victime" Type="nvarchar" MaxLength="1" />
+          <Property Name="numero" Type="nvarchar" MaxLength="50" />
+          <Property Name="rapport_parqui" Type="nvarchar" MaxLength="1048" />
+          <Property Name="autre_victime" Type="nvarchar" MaxLength="1" />
+          <Property Name="id_vehicule" Type="int" />
+          <Property Name="activite" Type="nvarchar" MaxLength="255" />
+          <Property Name="path_document" Type="nvarchar" MaxLength="1048" />
+        </EntityType>
+        <EntityType Name="Doc_Entete_Four">
+          <Key>
+            <PropertyRef Name="id_doc" />
+          </Key>
+          <Property Name="id_doc" Type="int" Nullable="false" />
+          <Property Name="numero" Type="int" />
+          <Property Name="reference_doc" Type="nvarchar" MaxLength="255" />
+          <Property Name="description" Type="nvarchar" MaxLength="1048" />
+          <Property Name="id_fournisseur" Type="int" />
+          <Property Name="date_doc" Type="date" />
+          <Property Name="montant_ht" Type="float" />
+          <Property Name="id_utilisateur" Type="int" />
+          <Property Name="id_type_intervention" Type="int" />
+          <Property Name="type_depense" Type="nvarchar" MaxLength="1" />
+          <Property Name="montant_MO" Type="float" />
+          <Property Name="type_prix" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Doc_Lignes_Four">
+          <Key>
+            <PropertyRef Name="id_ligne" />
+          </Key>
+          <Property Name="id_ligne" Type="int" Nullable="false" />
+          <Property Name="id_doc" Type="int" />
+          <Property Name="id_vehicule" Type="int" />
+          <Property Name="id_famille" Type="int" />
+          <Property Name="description" Type="nvarchar" MaxLength="1048" />
+          <Property Name="quantite" Type="float" />
+          <Property Name="prix_unitaire" Type="float" />
+          <Property Name="montant" Type="float" />
+          <Property Name="id_equipement" Type="int" />
+          <Property Name="date_du" Type="date" />
+          <Property Name="date_au" Type="date" />
+          <Property Name="kilometre" Type="int" />
+          <Property Name="kilometres_parcourus" Type="int" />
+          <Property Name="id_personnel" Type="int" />
+        </EntityType>
+        <EntityType Name="Equipements">
+          <Key>
+            <PropertyRef Name="id_equipement" />
+          </Key>
+          <Property Name="id_equipement" Type="int" Nullable="false" />
+          <Property Name="reference" Type="nvarchar" MaxLength="255" />
+          <Property Name="designation" Type="nvarchar" MaxLength="255" />
+          <Property Name="num_serie" Type="nvarchar" MaxLength="255" />
+          <Property Name="marque" Type="nvarchar" MaxLength="255" />
+          <Property Name="caractéristique" Type="nvarchar" MaxLength="2048" />
+          <Property Name="modele" Type="nvarchar" MaxLength="255" />
+          <Property Name="id_famille_equipement" Type="int" />
+          <Property Name="actif" Type="nvarchar" MaxLength="1" />
+          <Property Name="equipe_tempo" Type="nvarchar" MaxLength="1" />
+          <Property Name="date_achat" Type="date" />
+          <Property Name="prix_acquisition" Type="float" />
+          <Property Name="etat" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_fournisseur" Type="int" />
+          <Property Name="id_controleur" Type="int" />
+          <Property Name="date_limite" Type="date" />
+          <Property Name="photo" Type="nvarchar" MaxLength="250" />
+          <Property Name="id_societe" Type="int" />
+        </EntityType>
+        <EntityType Name="Familles_Vehicules">
+          <Key>
+            <PropertyRef Name="id_famille_vehicule" />
+          </Key>
+          <Property Name="id_famille_vehicule" Type="int" Nullable="false" />
+          <Property Name="code_famille_vehicule" Type="nvarchar" MaxLength="50" />
+          <Property Name="libelle_famille_vehicules" Type="nvarchar" MaxLength="50" />
+          <Property Name="actif" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Fournisseurs">
+          <Key>
+            <PropertyRef Name="id_fournisseur" />
+          </Key>
+          <Property Name="id_fournisseur" Type="int" Nullable="false" />
+          <Property Name="code_fournisseur" Type="nvarchar" MaxLength="50" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="adresse1" Type="nvarchar" MaxLength="50" />
+          <Property Name="adresse2" Type="nvarchar" MaxLength="50" />
+          <Property Name="code_postal" Type="nvarchar" MaxLength="10" />
+          <Property Name="ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="telephone1" Type="nvarchar" MaxLength="30" />
+          <Property Name="telecopie" Type="nvarchar" MaxLength="30" />
+          <Property Name="pays" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="telephone2" Type="nvarchar" MaxLength="30" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="import" Type="int" />
+          <Property Name="carte" Type="int" />
+          <Property Name="compte_client" Type="nvarchar" MaxLength="50" />
+          <Property Name="actif" Type="nvarchar" MaxLength="1" />
+          <Property Name="compte_auxiliaire" Type="nvarchar" MaxLength="50" />
+          <Property Name="compte_collectif" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_famille_fournisseur" Type="int" />
+          <Property Name="OKCarburant" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Restrictions_Medicales">
+          <Key>
+            <PropertyRef Name="id_restriction" />
+          </Key>
+          <Property Name="id_restriction" Type="int" Nullable="false" />
+          <Property Name="id_suivi_medical" Type="int" />
+          <Property Name="description" Type="nvarchar" MaxLength="2048" />
+          <Property Name="date_du" Type="date" />
+          <Property Name="date_au" Type="date" />
+          <Property Name="id_personnel" Type="int" />
+        </EntityType>
+        <EntityType Name="Suivis_Medicals">
+          <Key>
+            <PropertyRef Name="id_suivi_medical" />
+          </Key>
+          <Property Name="id_suivi_medical" Type="int" Nullable="false" />
+          <Property Name="id_personnel" Type="int" />
+          <Property Name="id_type_suivi" Type="int" />
+          <Property Name="date_arret" Type="date" />
+          <Property Name="date_reprise" Type="date" />
+          <Property Name="nbjour_arret" Type="int" />
+          <Property Name="date_visite" Type="date" />
+          <Property Name="date_renou" Type="date" />
+          <Property Name="nature_lesion" Type="nvarchar" MaxLength="1048" />
+          <Property Name="siege_lesion" Type="nvarchar" MaxLength="2048" />
+          <Property Name="cause" Type="nvarchar" MaxLength="1048" />
+          <Property Name="cote_lesion" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_accident" Type="int" />
+          <Property Name="restrictions" Type="nvarchar" MaxLength="1" />
+          <Property Name="lesions" Type="nvarchar" MaxLength="1" />
+          <Property Name="explication" Type="nvarchar" MaxLength="2048" />
+          <Property Name="nbjour_arret_ouvres" Type="int" />
+        </EntityType>
+        <EntityType Name="Vehicules">
+          <Key>
+            <PropertyRef Name="id_vehicule" />
+          </Key>
+          <Property Name="id_vehicule" Type="int" Nullable="false" />
+          <Property Name="num_interne" Type="nvarchar" MaxLength="255" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="255" />
+          <Property Name="immat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Num_serie" Type="nvarchar" MaxLength="1048" />
+          <Property Name="compteur_heure" Type="int" />
+          <Property Name="compteur_KM" Type="int" />
+          <Property Name="date_compteur" Type="date" />
+          <Property Name="date_heure" Type="date" />
+          <Property Name="marque" Type="nvarchar" MaxLength="50" />
+          <Property Name="caracteristique" Type="nvarchar" MaxLength="255" />
+          <Property Name="modele" Type="nvarchar" MaxLength="50" />
+          <Property Name="num_analystique" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_famille_vehicule" Type="int" />
+          <Property Name="actif" Type="nvarchar" MaxLength="1" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateEntree" Type="date" />
+          <Property Name="photo" Type="nvarchar" MaxLength="1048" />
+          <Property Name="valeur_acquisition" Type="float" />
+          <Property Name="num_facture" Type="nvarchar" MaxLength="50" />
+          <Property Name="location" Type="nvarchar" MaxLength="1" />
+          <Property Name="date_sortie" Type="date" />
+          <Property Name="id_societe" Type="int" />
+        </EntityType>
+        <EntityType Name="Vehicules_Compteurs">
+          <Key>
+            <PropertyRef Name="id_compteur" />
+          </Key>
+          <Property Name="id_compteur" Type="int" Nullable="false" />
+          <Property Name="id_vehicule" Type="int" Nullable="false" />
+          <Property Name="type_compteur" Type="nvarchar" MaxLength="1" />
+          <Property Name="date_compteur" Type="datetime" />
+          <Property Name="val_compteur" Type="bigint" />
+        </EntityType>
+        <Association Name="FK_Accidents_Details_Accidents">
+          <End Role="Details_Accidents" Type="Self.Details_Accidents" Multiplicity="0..1" />
+          <End Role="Accidents" Type="Self.Accidents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Details_Accidents">
+              <PropertyRef Name="id_detail_accident" />
+            </Principal>
+            <Dependent Role="Accidents">
+              <PropertyRef Name="id_detail_accident" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accidents_Travail_Vehicules">
+          <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+          <End Role="Details_Accidents" Type="Self.Details_Accidents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Details_Accidents">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accidents_Vehicules">
+          <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+          <End Role="Accidents" Type="Self.Accidents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Accidents">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Affectations_Equipements">
+          <End Role="Equipements" Type="Self.Equipements" Multiplicity="0..1" />
+          <End Role="Affectations" Type="Self.Affectations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipements">
+              <PropertyRef Name="id_equipement" />
+            </Principal>
+            <Dependent Role="Affectations">
+              <PropertyRef Name="id_equipement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Affectations_Vehicules">
+          <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+          <End Role="Affectations" Type="Self.Affectations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Affectations">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Controles_Vehicules_Vehicules">
+          <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="1" />
+          <End Role="Controles_Vehicules" Type="Self.Controles_Vehicules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Controles_Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doc_Entete_Four_Fournisseurs">
+          <End Role="Fournisseurs" Type="Self.Fournisseurs" Multiplicity="0..1" />
+          <End Role="Doc_Entete_Four" Type="Self.Doc_Entete_Four" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseurs">
+              <PropertyRef Name="id_fournisseur" />
+            </Principal>
+            <Dependent Role="Doc_Entete_Four">
+              <PropertyRef Name="id_fournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doc_Lignes_Four_Doc_Entete_Four">
+          <End Role="Doc_Entete_Four" Type="Self.Doc_Entete_Four" Multiplicity="0..1" />
+          <End Role="Doc_Lignes_Four" Type="Self.Doc_Lignes_Four" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doc_Entete_Four">
+              <PropertyRef Name="id_doc" />
+            </Principal>
+            <Dependent Role="Doc_Lignes_Four">
+              <PropertyRef Name="id_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doc_Lignes_Four_Equipements">
+          <End Role="Equipements" Type="Self.Equipements" Multiplicity="0..1" />
+          <End Role="Doc_Lignes_Four" Type="Self.Doc_Lignes_Four" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipements">
+              <PropertyRef Name="id_equipement" />
+            </Principal>
+            <Dependent Role="Doc_Lignes_Four">
+              <PropertyRef Name="id_equipement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doc_Lignes_Four_Vehicules">
+          <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="0..1" />
+          <End Role="Doc_Lignes_Four" Type="Self.Doc_Lignes_Four" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Doc_Lignes_Four">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipements_Fournisseurs">
+          <End Role="Fournisseurs" Type="Self.Fournisseurs" Multiplicity="0..1" />
+          <End Role="Equipements" Type="Self.Equipements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseurs">
+              <PropertyRef Name="id_fournisseur" />
+            </Principal>
+            <Dependent Role="Equipements">
+              <PropertyRef Name="id_fournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restrictions_Medicales_Suivis_Medicals">
+          <End Role="Suivis_Medicals" Type="Self.Suivis_Medicals" Multiplicity="0..1" />
+          <End Role="Restrictions_Medicales" Type="Self.Restrictions_Medicales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suivis_Medicals">
+              <PropertyRef Name="id_suivi_medical" />
+            </Principal>
+            <Dependent Role="Restrictions_Medicales">
+              <PropertyRef Name="id_suivi_medical" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suivis_Medicals_Accidents_Travail">
+          <End Role="Details_Accidents" Type="Self.Details_Accidents" Multiplicity="0..1" />
+          <End Role="Suivis_Medicals" Type="Self.Suivis_Medicals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Details_Accidents">
+              <PropertyRef Name="id_detail_accident" />
+            </Principal>
+            <Dependent Role="Suivis_Medicals">
+              <PropertyRef Name="id_accident" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicules_Compteurs_Vehicules">
+          <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="1" />
+          <End Role="Vehicules_Compteurs" Type="Self.Vehicules_Compteurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Vehicules_Compteurs">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicules_Familles_Vehicules">
+          <End Role="Familles_Vehicules" Type="Self.Familles_Vehicules" Multiplicity="0..1" />
+          <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Familles_Vehicules">
+              <PropertyRef Name="id_famille_vehicule" />
+            </Principal>
+            <Dependent Role="Vehicules">
+              <PropertyRef Name="id_famille_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SAGA_GASQUETModelStoreContainer">
+          <EntitySet Name="Accidents" EntityType="Self.Accidents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Affectations" EntityType="Self.Affectations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Controles_Vehicules" EntityType="Self.Controles_Vehicules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Details_Accidents" EntityType="Self.Details_Accidents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doc_Entete_Four" EntityType="Self.Doc_Entete_Four" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doc_Lignes_Four" EntityType="Self.Doc_Lignes_Four" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipements" EntityType="Self.Equipements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Familles_Vehicules" EntityType="Self.Familles_Vehicules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fournisseurs" EntityType="Self.Fournisseurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restrictions_Medicales" EntityType="Self.Restrictions_Medicales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suivis_Medicals" EntityType="Self.Suivis_Medicals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicules" EntityType="Self.Vehicules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicules_Compteurs" EntityType="Self.Vehicules_Compteurs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accidents_Details_Accidents" Association="Self.FK_Accidents_Details_Accidents">
+            <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+            <End Role="Accidents" EntitySet="Accidents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accidents_Travail_Vehicules" Association="Self.FK_Accidents_Travail_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accidents_Vehicules" Association="Self.FK_Accidents_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Accidents" EntitySet="Accidents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Affectations_Equipements" Association="Self.FK_Affectations_Equipements">
+            <End Role="Equipements" EntitySet="Equipements" />
+            <End Role="Affectations" EntitySet="Affectations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Affectations_Vehicules" Association="Self.FK_Affectations_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Affectations" EntitySet="Affectations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Controles_Vehicules_Vehicules" Association="Self.FK_Controles_Vehicules_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Controles_Vehicules" EntitySet="Controles_Vehicules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doc_Entete_Four_Fournisseurs" Association="Self.FK_Doc_Entete_Four_Fournisseurs">
+            <End Role="Fournisseurs" EntitySet="Fournisseurs" />
+            <End Role="Doc_Entete_Four" EntitySet="Doc_Entete_Four" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doc_Lignes_Four_Doc_Entete_Four" Association="Self.FK_Doc_Lignes_Four_Doc_Entete_Four">
+            <End Role="Doc_Entete_Four" EntitySet="Doc_Entete_Four" />
+            <End Role="Doc_Lignes_Four" EntitySet="Doc_Lignes_Four" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doc_Lignes_Four_Equipements" Association="Self.FK_Doc_Lignes_Four_Equipements">
+            <End Role="Equipements" EntitySet="Equipements" />
+            <End Role="Doc_Lignes_Four" EntitySet="Doc_Lignes_Four" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doc_Lignes_Four_Vehicules" Association="Self.FK_Doc_Lignes_Four_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Doc_Lignes_Four" EntitySet="Doc_Lignes_Four" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipements_Fournisseurs" Association="Self.FK_Equipements_Fournisseurs">
+            <End Role="Fournisseurs" EntitySet="Fournisseurs" />
+            <End Role="Equipements" EntitySet="Equipements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restrictions_Medicales_Suivis_Medicals" Association="Self.FK_Restrictions_Medicales_Suivis_Medicals">
+            <End Role="Suivis_Medicals" EntitySet="Suivis_Medicals" />
+            <End Role="Restrictions_Medicales" EntitySet="Restrictions_Medicales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suivis_Medicals_Accidents_Travail" Association="Self.FK_Suivis_Medicals_Accidents_Travail">
+            <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+            <End Role="Suivis_Medicals" EntitySet="Suivis_Medicals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicules_Compteurs_Vehicules" Association="Self.FK_Vehicules_Compteurs_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Vehicules_Compteurs" EntitySet="Vehicules_Compteurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicules_Familles_Vehicules" Association="Self.FK_Vehicules_Familles_Vehicules">
+            <End Role="Familles_Vehicules" EntitySet="Familles_Vehicules" />
+            <End Role="Vehicules" EntitySet="Vehicules" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAGA_GASQUETModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Familles_Vehicules">
+          <Key>
+            <PropertyRef Name="id_famille_vehicule" />
+          </Key>
+          <Property Name="id_famille_vehicule" Type="Int32" Nullable="false" />
+          <Property Name="code_famille_vehicule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="libelle_famille_vehicules" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="actif" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vehicules" Relationship="Self.FK_Vehicules_Familles_Vehicules" FromRole="Familles_Vehicules" ToRole="Vehicules" />
+        </EntityType>
+        <EntityType Name="Vehicules">
+          <Key>
+            <PropertyRef Name="id_vehicule" />
+          </Key>
+          <Property Name="id_vehicule" Type="Int32" Nullable="false" />
+          <Property Name="num_interne" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="immat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Num_serie" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+          <Property Name="compteur_heure" Type="Int32" />
+          <Property Name="compteur_KM" Type="Int32" />
+          <Property Name="date_compteur" Type="DateTime" Precision="0" />
+          <Property Name="date_heure" Type="DateTime" Precision="0" />
+          <Property Name="marque" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="caracteristique" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="modele" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="num_analystique" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_famille_vehicule" Type="Int32" />
+          <Property Name="actif" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateEntree" Type="DateTime" Precision="0" />
+          <Property Name="photo" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+          <Property Name="valeur_acquisition" Type="Double" />
+          <Property Name="num_facture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="location" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="date_sortie" Type="DateTime" Precision="0" />
+          <Property Name="id_societe" Type="Int32" />
+          <NavigationProperty Name="Familles_Vehicules" Relationship="Self.FK_Vehicules_Familles_Vehicules" FromRole="Vehicules" ToRole="Familles_Vehicules" />
+          <NavigationProperty Name="Affectations" Relationship="SAGA_GASQUETModel.FK_Affectations_Vehicules" FromRole="Vehicules" ToRole="Affectations" />
+          <NavigationProperty Name="Controles_Vehicules" Relationship="SAGA_GASQUETModel.FK_Controles_Vehicules_Vehicules" FromRole="Vehicules" ToRole="Controles_Vehicules" />
+          <NavigationProperty Name="Details_Accidents" Relationship="SAGA_GASQUETModel.FK_Accidents_Travail_Vehicules" FromRole="Vehicules" ToRole="Details_Accidents" />
+          <NavigationProperty Name="Doc_Lignes_Four" Relationship="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Vehicules" FromRole="Vehicules" ToRole="Doc_Lignes_Four" />
+          <NavigationProperty Name="Vehicules_Compteurs" Relationship="SAGA_GASQUETModel.FK_Vehicules_Compteurs_Vehicules" FromRole="Vehicules" ToRole="Vehicules_Compteurs" />
+          <NavigationProperty Name="Accidents" Relationship="SAGA_GASQUETModel.FK_Accidents_Vehicules" FromRole="Vehicules" ToRole="Accidents" />
+        </EntityType>
+        <Association Name="FK_Vehicules_Familles_Vehicules">
+          <End Role="Familles_Vehicules" Type="Self.Familles_Vehicules" Multiplicity="0..1" />
+          <End Role="Vehicules" Type="Self.Vehicules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Familles_Vehicules">
+              <PropertyRef Name="id_famille_vehicule" />
+            </Principal>
+            <Dependent Role="Vehicules">
+              <PropertyRef Name="id_famille_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SAGA_GASQUETEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Familles_Vehicules" EntityType="Self.Familles_Vehicules" />
+          <EntitySet Name="Vehicules" EntityType="Self.Vehicules" />
+          <AssociationSet Name="FK_Vehicules_Familles_Vehicules" Association="Self.FK_Vehicules_Familles_Vehicules">
+            <End Role="Familles_Vehicules" EntitySet="Familles_Vehicules" />
+            <End Role="Vehicules" EntitySet="Vehicules" />
+          </AssociationSet>
+          <EntitySet Name="Affectations" EntityType="SAGA_GASQUETModel.Affectations" />
+          <EntitySet Name="Controles_Vehicules" EntityType="SAGA_GASQUETModel.Controles_Vehicules" />
+          <EntitySet Name="Details_Accidents" EntityType="SAGA_GASQUETModel.Details_Accidents" />
+          <EntitySet Name="Doc_Lignes_Four" EntityType="SAGA_GASQUETModel.Doc_Lignes_Four" />
+          <EntitySet Name="Vehicules_Compteurs" EntityType="SAGA_GASQUETModel.Vehicules_Compteurs" />
+          <AssociationSet Name="FK_Affectations_Vehicules" Association="SAGA_GASQUETModel.FK_Affectations_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Affectations" EntitySet="Affectations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Controles_Vehicules_Vehicules" Association="SAGA_GASQUETModel.FK_Controles_Vehicules_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Controles_Vehicules" EntitySet="Controles_Vehicules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accidents_Travail_Vehicules" Association="SAGA_GASQUETModel.FK_Accidents_Travail_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doc_Lignes_Four_Vehicules" Association="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Doc_Lignes_Four" EntitySet="Doc_Lignes_Four" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicules_Compteurs_Vehicules" Association="SAGA_GASQUETModel.FK_Vehicules_Compteurs_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Vehicules_Compteurs" EntitySet="Vehicules_Compteurs" />
+          </AssociationSet>
+          <EntitySet Name="Accidents" EntityType="SAGA_GASQUETModel.Accidents" />
+          <EntitySet Name="Suivis_Medicals" EntityType="SAGA_GASQUETModel.Suivis_Medicals" />
+          <AssociationSet Name="FK_Accidents_Details_Accidents" Association="SAGA_GASQUETModel.FK_Accidents_Details_Accidents">
+            <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+            <End Role="Accidents" EntitySet="Accidents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accidents_Vehicules" Association="SAGA_GASQUETModel.FK_Accidents_Vehicules">
+            <End Role="Vehicules" EntitySet="Vehicules" />
+            <End Role="Accidents" EntitySet="Accidents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suivis_Medicals_Accidents_Travail" Association="SAGA_GASQUETModel.FK_Suivis_Medicals_Accidents_Travail">
+            <End Role="Details_Accidents" EntitySet="Details_Accidents" />
+            <End Role="Suivis_Medicals" EntitySet="Suivis_Medicals" />
+          </AssociationSet>
+          <EntitySet Name="Restrictions_Medicales" EntityType="SAGA_GASQUETModel.Restrictions_Medicales" />
+          <AssociationSet Name="FK_Restrictions_Medicales_Suivis_Medicals" Association="SAGA_GASQUETModel.FK_Restrictions_Medicales_Suivis_Medicals">
+            <End Role="Suivis_Medicals" EntitySet="Suivis_Medicals" />
+            <End Role="Restrictions_Medicales" EntitySet="Restrictions_Medicales" />
+          </AssociationSet>
+          <EntitySet Name="Doc_Entete_Four" EntityType="SAGA_GASQUETModel.Doc_Entete_Four" />
+          <EntitySet Name="Fournisseurs" EntityType="SAGA_GASQUETModel.Fournisseurs" />
+          <AssociationSet Name="FK_Doc_Entete_Four_Fournisseurs" Association="SAGA_GASQUETModel.FK_Doc_Entete_Four_Fournisseurs">
+            <End Role="Fournisseurs" EntitySet="Fournisseurs" />
+            <End Role="Doc_Entete_Four" EntitySet="Doc_Entete_Four" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doc_Lignes_Four_Doc_Entete_Four" Association="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Doc_Entete_Four">
+            <End Role="Doc_Entete_Four" EntitySet="Doc_Entete_Four" />
+            <End Role="Doc_Lignes_Four" EntitySet="Doc_Lignes_Four" />
+          </AssociationSet>
+          <EntitySet Name="Equipements" EntityType="SAGA_GASQUETModel.Equipements" />
+          <AssociationSet Name="FK_Affectations_Equipements" Association="SAGA_GASQUETModel.FK_Affectations_Equipements">
+            <End Role="Equipements" EntitySet="Equipements" />
+            <End Role="Affectations" EntitySet="Affectations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doc_Lignes_Four_Equipements" Association="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Equipements">
+            <End Role="Equipements" EntitySet="Equipements" />
+            <End Role="Doc_Lignes_Four" EntitySet="Doc_Lignes_Four" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipements_Fournisseurs" Association="SAGA_GASQUETModel.FK_Equipements_Fournisseurs">
+            <End Role="Fournisseurs" EntitySet="Fournisseurs" />
+            <End Role="Equipements" EntitySet="Equipements" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Affectations">
+          <Key>
+            <PropertyRef Name="id_affectation" />
+          </Key>
+          <Property Name="id_affectation" Type="Int32" Nullable="false" />
+          <Property Name="date_du" Type="DateTime" Precision="0" />
+          <Property Name="date_au" Type="DateTime" Precision="0" />
+          <Property Name="id_personnel" Type="Int32" />
+          <Property Name="id_vehicule" Type="Int32" />
+          <Property Name="id_equipe" Type="Int32" />
+          <Property Name="id_equipement" Type="Int32" />
+          <Property Name="chef_equipe" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="type_affecte" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="id_texte" Type="Int32" />
+          <NavigationProperty Name="Vehicules" Relationship="SAGA_GASQUETModel.FK_Affectations_Vehicules" FromRole="Affectations" ToRole="Vehicules" />
+          <NavigationProperty Name="Equipements" Relationship="SAGA_GASQUETModel.FK_Affectations_Equipements" FromRole="Affectations" ToRole="Equipements" />
+        </EntityType>
+        <EntityType Name="Controles_Vehicules">
+          <Key>
+            <PropertyRef Name="id_controle" />
+            <PropertyRef Name="id_vehicule" />
+          </Key>
+          <Property Name="id_controle" Type="Int32" Nullable="false" />
+          <Property Name="id_vehicule" Type="Int32" Nullable="false" />
+          <Property Name="date_obtention" Type="DateTime" Precision="0" />
+          <Property Name="organisme" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cout" Type="Double" />
+          <Property Name="date_recyclage" Type="DateTime" Precision="0" />
+          <Property Name="organisme_recyclage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cout_recyclage" Type="Double" />
+          <Property Name="description" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="tri" Type="Int32" />
+          <Property Name="id_valeur_liste" Type="Int32" />
+          <NavigationProperty Name="Vehicules" Relationship="SAGA_GASQUETModel.FK_Controles_Vehicules_Vehicules" FromRole="Controles_Vehicules" ToRole="Vehicules" />
+        </EntityType>
+        <EntityType Name="Details_Accidents">
+          <Key>
+            <PropertyRef Name="id_detail_accident" />
+          </Key>
+          <Property Name="id_detail_accident" Type="Int32" Nullable="false" />
+          <Property Name="jour_semaine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_accident" Type="DateTime" Precision="0" />
+          <Property Name="heure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="horraire_jour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lieu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="circonstances" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="siege_lesions" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nature_lesions" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hopital" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+          <Property Name="id_consequences_accident" Type="Int32" />
+          <Property Name="id_temoin" Type="Int32" />
+          <Property Name="temoins" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="rapport_police" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="cause_tiers" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="nom_tiers" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="arret_travail" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="assurance_tiers" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+          <Property Name="id_type_constat_accident" Type="Int32" />
+          <Property Name="date_constat" Type="DateTime" Precision="0" />
+          <Property Name="heure_constat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="constat_employeur" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="constat_preposes" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="constat_victime" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rapport_parqui" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+          <Property Name="autre_victime" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="id_vehicule" Type="Int32" />
+          <Property Name="activite" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="path_document" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vehicules" Relationship="SAGA_GASQUETModel.FK_Accidents_Travail_Vehicules" FromRole="Details_Accidents" ToRole="Vehicules" />
+          <NavigationProperty Name="Accidents" Relationship="SAGA_GASQUETModel.FK_Accidents_Details_Accidents" FromRole="Details_Accidents" ToRole="Accidents" />
+          <NavigationProperty Name="Suivis_Medicals" Relationship="SAGA_GASQUETModel.FK_Suivis_Medicals_Accidents_Travail" FromRole="Details_Accidents" ToRole="Suivis_Medicals" />
+        </EntityType>
+        <EntityType Name="Doc_Lignes_Four">
+          <Key>
+            <PropertyRef Name="id_ligne" />
+          </Key>
+          <Property Name="id_ligne" Type="Int32" Nullable="false" />
+          <Property Name="id_doc" Type="Int32" />
+          <Property Name="id_vehicule" Type="Int32" />
+          <Property Name="id_famille" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+          <Property Name="quantite" Type="Double" />
+          <Property Name="prix_unitaire" Type="Double" />
+          <Property Name="montant" Type="Double" />
+          <Property Name="id_equipement" Type="Int32" />
+          <Property Name="date_du" Type="DateTime" Precision="0" />
+          <Property Name="date_au" Type="DateTime" Precision="0" />
+          <Property Name="kilometre" Type="Int32" />
+          <Property Name="kilometres_parcourus" Type="Int32" />
+          <NavigationProperty Name="Vehicules" Relationship="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Vehicules" FromRole="Doc_Lignes_Four" ToRole="Vehicules" />
+          <Property Name="id_personnel" Type="Int32" />
+          <NavigationProperty Name="Doc_Entete_Four" Relationship="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Doc_Entete_Four" FromRole="Doc_Lignes_Four" ToRole="Doc_Entete_Four" />
+          <NavigationProperty Name="Equipements" Relationship="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Equipements" FromRole="Doc_Lignes_Four" ToRole="Equipements" />
+        </EntityType>
+        <EntityType Name="Vehicules_Compteurs">
+          <Key>
+            <PropertyRef Name="id_compteur" />
+          </Key>
+          <Property Name="id_compteur" Type="Int32" Nullable="false" />
+          <Property Name="id_vehicule" Type="Int32" Nullable="false" />
+          <Property Name="type_compteur" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="date_compteur" Type="DateTime" Precision="3" />
+          <Property Name="val_compteur" Type="Int64" />
+          <NavigationProperty Name="Vehicules" Relationship="SAGA_GASQUETModel.FK_Vehicules_Compteurs_Vehicules" FromRole="Vehicules_Compteurs" ToRole="Vehicules" />
+        </EntityType>
+        <Association Name="FK_Affectations_Vehicules">
+          <End Type="SAGA_GASQUETModel.Vehicules" Role="Vehicules" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Affectations" Role="Affectations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Affectations">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Controles_Vehicules_Vehicules">
+          <End Type="SAGA_GASQUETModel.Vehicules" Role="Vehicules" Multiplicity="1" />
+          <End Type="SAGA_GASQUETModel.Controles_Vehicules" Role="Controles_Vehicules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Controles_Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accidents_Travail_Vehicules">
+          <End Type="SAGA_GASQUETModel.Vehicules" Role="Vehicules" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Details_Accidents" Role="Details_Accidents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Details_Accidents">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doc_Lignes_Four_Vehicules">
+          <End Type="SAGA_GASQUETModel.Vehicules" Role="Vehicules" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Doc_Lignes_Four" Role="Doc_Lignes_Four" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Doc_Lignes_Four">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicules_Compteurs_Vehicules">
+          <End Type="SAGA_GASQUETModel.Vehicules" Role="Vehicules" Multiplicity="1" />
+          <End Type="SAGA_GASQUETModel.Vehicules_Compteurs" Role="Vehicules_Compteurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Vehicules_Compteurs">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Accidents">
+          <Key>
+            <PropertyRef Name="id_accident" />
+          </Key>
+          <Property Name="id_accident" Type="Int32" Nullable="false" />
+          <Property Name="id_personnel" Type="Int32" />
+          <Property Name="id_vehicule" Type="Int32" />
+          <Property Name="date_saisie" Type="DateTime" Precision="0" />
+          <Property Name="id_type_suivi" Type="Int32" />
+          <Property Name="id_detail_accident" Type="Int32" />
+          <Property Name="id_doc" Type="Int32" />
+          <Property Name="path_document" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Details_Accidents" Relationship="SAGA_GASQUETModel.FK_Accidents_Details_Accidents" FromRole="Accidents" ToRole="Details_Accidents" />
+          <NavigationProperty Name="Vehicules" Relationship="SAGA_GASQUETModel.FK_Accidents_Vehicules" FromRole="Accidents" ToRole="Vehicules" />
+        </EntityType>
+        <EntityType Name="Suivis_Medicals">
+          <Key>
+            <PropertyRef Name="id_suivi_medical" />
+          </Key>
+          <Property Name="id_suivi_medical" Type="Int32" Nullable="false" />
+          <Property Name="id_personnel" Type="Int32" />
+          <Property Name="id_type_suivi" Type="Int32" />
+          <Property Name="date_arret" Type="DateTime" Precision="0" />
+          <Property Name="date_reprise" Type="DateTime" Precision="0" />
+          <Property Name="nbjour_arret" Type="Int32" />
+          <Property Name="date_visite" Type="DateTime" Precision="0" />
+          <Property Name="date_renou" Type="DateTime" Precision="0" />
+          <Property Name="nature_lesion" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+          <Property Name="siege_lesion" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="cause" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+          <Property Name="cote_lesion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_accident" Type="Int32" />
+          <Property Name="restrictions" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="lesions" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="explication" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="nbjour_arret_ouvres" Type="Int32" />
+          <NavigationProperty Name="Details_Accidents" Relationship="SAGA_GASQUETModel.FK_Suivis_Medicals_Accidents_Travail" FromRole="Suivis_Medicals" ToRole="Details_Accidents" />
+          <NavigationProperty Name="Restrictions_Medicales" Relationship="SAGA_GASQUETModel.FK_Restrictions_Medicales_Suivis_Medicals" FromRole="Suivis_Medicals" ToRole="Restrictions_Medicales" />
+        </EntityType>
+        <Association Name="FK_Accidents_Details_Accidents">
+          <End Type="SAGA_GASQUETModel.Details_Accidents" Role="Details_Accidents" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Accidents" Role="Accidents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Details_Accidents">
+              <PropertyRef Name="id_detail_accident" />
+            </Principal>
+            <Dependent Role="Accidents">
+              <PropertyRef Name="id_detail_accident" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accidents_Vehicules">
+          <End Type="SAGA_GASQUETModel.Vehicules" Role="Vehicules" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Accidents" Role="Accidents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicules">
+              <PropertyRef Name="id_vehicule" />
+            </Principal>
+            <Dependent Role="Accidents">
+              <PropertyRef Name="id_vehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suivis_Medicals_Accidents_Travail">
+          <End Type="SAGA_GASQUETModel.Details_Accidents" Role="Details_Accidents" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Suivis_Medicals" Role="Suivis_Medicals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Details_Accidents">
+              <PropertyRef Name="id_detail_accident" />
+            </Principal>
+            <Dependent Role="Suivis_Medicals">
+              <PropertyRef Name="id_accident" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Restrictions_Medicales">
+          <Key>
+            <PropertyRef Name="id_restriction" />
+          </Key>
+          <Property Name="id_restriction" Type="Int32" Nullable="false" />
+          <Property Name="id_suivi_medical" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="date_du" Type="DateTime" Precision="0" />
+          <Property Name="date_au" Type="DateTime" Precision="0" />
+          <Property Name="id_personnel" Type="Int32" />
+          <NavigationProperty Name="Suivis_Medicals" Relationship="SAGA_GASQUETModel.FK_Restrictions_Medicales_Suivis_Medicals" FromRole="Restrictions_Medicales" ToRole="Suivis_Medicals" />
+        </EntityType>
+        <Association Name="FK_Restrictions_Medicales_Suivis_Medicals">
+          <End Type="SAGA_GASQUETModel.Suivis_Medicals" Role="Suivis_Medicals" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Restrictions_Medicales" Role="Restrictions_Medicales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suivis_Medicals">
+              <PropertyRef Name="id_suivi_medical" />
+            </Principal>
+            <Dependent Role="Restrictions_Medicales">
+              <PropertyRef Name="id_suivi_medical" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Doc_Entete_Four">
+          <Key>
+            <PropertyRef Name="id_doc" />
+          </Key>
+          <Property Name="id_doc" Type="Int32" Nullable="false" />
+          <Property Name="numero" Type="Int32" />
+          <Property Name="reference_doc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="1048" FixedLength="false" Unicode="true" />
+          <Property Name="id_fournisseur" Type="Int32" />
+          <Property Name="date_doc" Type="DateTime" Precision="0" />
+          <Property Name="montant_ht" Type="Double" />
+          <Property Name="id_utilisateur" Type="Int32" />
+          <Property Name="id_type_intervention" Type="Int32" />
+          <Property Name="type_depense" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="montant_MO" Type="Double" />
+          <Property Name="type_prix" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Fournisseurs" Relationship="SAGA_GASQUETModel.FK_Doc_Entete_Four_Fournisseurs" FromRole="Doc_Entete_Four" ToRole="Fournisseurs" />
+          <NavigationProperty Name="Doc_Lignes_Four" Relationship="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Doc_Entete_Four" FromRole="Doc_Entete_Four" ToRole="Doc_Lignes_Four" />
+        </EntityType>
+        <EntityType Name="Fournisseurs">
+          <Key>
+            <PropertyRef Name="id_fournisseur" />
+          </Key>
+          <Property Name="id_fournisseur" Type="Int32" Nullable="false" />
+          <Property Name="code_fournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adresse1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adresse2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="code_postal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="telephone1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="telecopie" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="pays" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="telephone2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="import" Type="Int32" />
+          <Property Name="carte" Type="Int32" />
+          <Property Name="compte_client" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="actif" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="compte_auxiliaire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compte_collectif" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_famille_fournisseur" Type="Int32" />
+          <Property Name="OKCarburant" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doc_Entete_Four" Relationship="SAGA_GASQUETModel.FK_Doc_Entete_Four_Fournisseurs" FromRole="Fournisseurs" ToRole="Doc_Entete_Four" />
+          <NavigationProperty Name="Equipements" Relationship="SAGA_GASQUETModel.FK_Equipements_Fournisseurs" FromRole="Fournisseurs" ToRole="Equipements" />
+        </EntityType>
+        <Association Name="FK_Doc_Entete_Four_Fournisseurs">
+          <End Type="SAGA_GASQUETModel.Fournisseurs" Role="Fournisseurs" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Doc_Entete_Four" Role="Doc_Entete_Four" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseurs">
+              <PropertyRef Name="id_fournisseur" />
+            </Principal>
+            <Dependent Role="Doc_Entete_Four">
+              <PropertyRef Name="id_fournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doc_Lignes_Four_Doc_Entete_Four">
+          <End Type="SAGA_GASQUETModel.Doc_Entete_Four" Role="Doc_Entete_Four" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Doc_Lignes_Four" Role="Doc_Lignes_Four" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doc_Entete_Four">
+              <PropertyRef Name="id_doc" />
+            </Principal>
+            <Dependent Role="Doc_Lignes_Four">
+              <PropertyRef Name="id_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Equipements">
+          <Key>
+            <PropertyRef Name="id_equipement" />
+          </Key>
+          <Property Name="id_equipement" Type="Int32" Nullable="false" />
+          <Property Name="reference" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="designation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="num_serie" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="marque" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="caractéristique" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="modele" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id_famille_equipement" Type="Int32" />
+          <Property Name="actif" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="equipe_tempo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="date_achat" Type="DateTime" Precision="0" />
+          <Property Name="prix_acquisition" Type="Double" />
+          <Property Name="etat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_fournisseur" Type="Int32" />
+          <Property Name="id_controleur" Type="Int32" />
+          <Property Name="date_limite" Type="DateTime" Precision="0" />
+          <Property Name="photo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="id_societe" Type="Int32" />
+          <NavigationProperty Name="Affectations" Relationship="SAGA_GASQUETModel.FK_Affectations_Equipements" FromRole="Equipements" ToRole="Affectations" />
+          <NavigationProperty Name="Doc_Lignes_Four" Relationship="SAGA_GASQUETModel.FK_Doc_Lignes_Four_Equipements" FromRole="Equipements" ToRole="Doc_Lignes_Four" />
+          <NavigationProperty Name="Fournisseurs" Relationship="SAGA_GASQUETModel.FK_Equipements_Fournisseurs" FromRole="Equipements" ToRole="Fournisseurs" />
+        </EntityType>
+        <Association Name="FK_Affectations_Equipements">
+          <End Type="SAGA_GASQUETModel.Equipements" Role="Equipements" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Affectations" Role="Affectations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipements">
+              <PropertyRef Name="id_equipement" />
+            </Principal>
+            <Dependent Role="Affectations">
+              <PropertyRef Name="id_equipement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doc_Lignes_Four_Equipements">
+          <End Type="SAGA_GASQUETModel.Equipements" Role="Equipements" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Doc_Lignes_Four" Role="Doc_Lignes_Four" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipements">
+              <PropertyRef Name="id_equipement" />
+            </Principal>
+            <Dependent Role="Doc_Lignes_Four">
+              <PropertyRef Name="id_equipement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipements_Fournisseurs">
+          <End Type="SAGA_GASQUETModel.Fournisseurs" Role="Fournisseurs" Multiplicity="0..1" />
+          <End Type="SAGA_GASQUETModel.Equipements" Role="Equipements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseurs">
+              <PropertyRef Name="id_fournisseur" />
+            </Principal>
+            <Dependent Role="Equipements">
+              <PropertyRef Name="id_fournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAGA_GASQUETModelStoreContainer" CdmEntityContainer="SAGA_GASQUETEntities">
+          <EntitySetMapping Name="Familles_Vehicules">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Familles_Vehicules">
+              <MappingFragment StoreEntitySet="Familles_Vehicules">
+                <ScalarProperty Name="id_famille_vehicule" ColumnName="id_famille_vehicule" />
+                <ScalarProperty Name="code_famille_vehicule" ColumnName="code_famille_vehicule" />
+                <ScalarProperty Name="libelle_famille_vehicules" ColumnName="libelle_famille_vehicules" />
+                <ScalarProperty Name="actif" ColumnName="actif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicules">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Vehicules">
+              <MappingFragment StoreEntitySet="Vehicules">
+                <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+                <ScalarProperty Name="num_interne" ColumnName="num_interne" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="immat" ColumnName="immat" />
+                <ScalarProperty Name="Num_serie" ColumnName="Num_serie" />
+                <ScalarProperty Name="compteur_heure" ColumnName="compteur_heure" />
+                <ScalarProperty Name="compteur_KM" ColumnName="compteur_KM" />
+                <ScalarProperty Name="date_compteur" ColumnName="date_compteur" />
+                <ScalarProperty Name="date_heure" ColumnName="date_heure" />
+                <ScalarProperty Name="marque" ColumnName="marque" />
+                <ScalarProperty Name="caracteristique" ColumnName="caracteristique" />
+                <ScalarProperty Name="modele" ColumnName="modele" />
+                <ScalarProperty Name="num_analystique" ColumnName="num_analystique" />
+                <ScalarProperty Name="id_famille_vehicule" ColumnName="id_famille_vehicule" />
+                <ScalarProperty Name="actif" ColumnName="actif" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="dateEntree" ColumnName="dateEntree" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="valeur_acquisition" ColumnName="valeur_acquisition" />
+                <ScalarProperty Name="num_facture" ColumnName="num_facture" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="date_sortie" ColumnName="date_sortie" />
+                <ScalarProperty Name="id_societe" ColumnName="id_societe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Affectations">
+            <EntityTypeMapping TypeName="IsTypeOf(SAGA_GASQUETModel.Affectations)">
+              <MappingFragment StoreEntitySet="Affectations">
+                <ScalarProperty Name="id_affectation" ColumnName="id_affectation" />
+                <ScalarProperty Name="id_texte" ColumnName="id_texte" />
+                <ScalarProperty Name="type_affecte" ColumnName="type_affecte" />
+                <ScalarProperty Name="chef_equipe" ColumnName="chef_equipe" />
+                <ScalarProperty Name="id_equipement" ColumnName="id_equipement" />
+                <ScalarProperty Name="id_equipe" ColumnName="id_equipe" />
+                <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+                <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+                <ScalarProperty Name="date_au" ColumnName="date_au" />
+                <ScalarProperty Name="date_du" ColumnName="date_du" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Controles_Vehicules">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Controles_Vehicules">
+              <MappingFragment StoreEntitySet="Controles_Vehicules">
+                <ScalarProperty Name="id_valeur_liste" ColumnName="id_valeur_liste" />
+                <ScalarProperty Name="tri" ColumnName="tri" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="cout_recyclage" ColumnName="cout_recyclage" />
+                <ScalarProperty Name="organisme_recyclage" ColumnName="organisme_recyclage" />
+                <ScalarProperty Name="date_recyclage" ColumnName="date_recyclage" />
+                <ScalarProperty Name="cout" ColumnName="cout" />
+                <ScalarProperty Name="organisme" ColumnName="organisme" />
+                <ScalarProperty Name="date_obtention" ColumnName="date_obtention" />
+                <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+                <ScalarProperty Name="id_controle" ColumnName="id_controle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Details_Accidents">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Details_Accidents">
+              <MappingFragment StoreEntitySet="Details_Accidents">
+                <ScalarProperty Name="path_document" ColumnName="path_document" />
+                <ScalarProperty Name="activite" ColumnName="activite" />
+                <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+                <ScalarProperty Name="autre_victime" ColumnName="autre_victime" />
+                <ScalarProperty Name="rapport_parqui" ColumnName="rapport_parqui" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="constat_victime" ColumnName="constat_victime" />
+                <ScalarProperty Name="constat_preposes" ColumnName="constat_preposes" />
+                <ScalarProperty Name="constat_employeur" ColumnName="constat_employeur" />
+                <ScalarProperty Name="heure_constat" ColumnName="heure_constat" />
+                <ScalarProperty Name="date_constat" ColumnName="date_constat" />
+                <ScalarProperty Name="id_type_constat_accident" ColumnName="id_type_constat_accident" />
+                <ScalarProperty Name="assurance_tiers" ColumnName="assurance_tiers" />
+                <ScalarProperty Name="arret_travail" ColumnName="arret_travail" />
+                <ScalarProperty Name="nom_tiers" ColumnName="nom_tiers" />
+                <ScalarProperty Name="cause_tiers" ColumnName="cause_tiers" />
+                <ScalarProperty Name="rapport_police" ColumnName="rapport_police" />
+                <ScalarProperty Name="temoins" ColumnName="temoins" />
+                <ScalarProperty Name="id_temoin" ColumnName="id_temoin" />
+                <ScalarProperty Name="id_consequences_accident" ColumnName="id_consequences_accident" />
+                <ScalarProperty Name="hopital" ColumnName="hopital" />
+                <ScalarProperty Name="nature_lesions" ColumnName="nature_lesions" />
+                <ScalarProperty Name="siege_lesions" ColumnName="siege_lesions" />
+                <ScalarProperty Name="circonstances" ColumnName="circonstances" />
+                <ScalarProperty Name="lieu" ColumnName="lieu" />
+                <ScalarProperty Name="horraire_jour" ColumnName="horraire_jour" />
+                <ScalarProperty Name="heure" ColumnName="heure" />
+                <ScalarProperty Name="date_accident" ColumnName="date_accident" />
+                <ScalarProperty Name="jour_semaine" ColumnName="jour_semaine" />
+                <ScalarProperty Name="id_detail_accident" ColumnName="id_detail_accident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doc_Lignes_Four">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Doc_Lignes_Four">
+              <MappingFragment StoreEntitySet="Doc_Lignes_Four">
+                <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+                <ScalarProperty Name="kilometres_parcourus" ColumnName="kilometres_parcourus" />
+                <ScalarProperty Name="kilometre" ColumnName="kilometre" />
+                <ScalarProperty Name="date_au" ColumnName="date_au" />
+                <ScalarProperty Name="date_du" ColumnName="date_du" />
+                <ScalarProperty Name="id_equipement" ColumnName="id_equipement" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="prix_unitaire" ColumnName="prix_unitaire" />
+                <ScalarProperty Name="quantite" ColumnName="quantite" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id_famille" ColumnName="id_famille" />
+                <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+                <ScalarProperty Name="id_doc" ColumnName="id_doc" />
+                <ScalarProperty Name="id_ligne" ColumnName="id_ligne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicules_Compteurs">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Vehicules_Compteurs">
+              <MappingFragment StoreEntitySet="Vehicules_Compteurs">
+                <ScalarProperty Name="val_compteur" ColumnName="val_compteur" />
+                <ScalarProperty Name="date_compteur" ColumnName="date_compteur" />
+                <ScalarProperty Name="type_compteur" ColumnName="type_compteur" />
+                <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+                <ScalarProperty Name="id_compteur" ColumnName="id_compteur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accidents">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Accidents">
+              <MappingFragment StoreEntitySet="Accidents">
+                <ScalarProperty Name="path_document" ColumnName="path_document" />
+                <ScalarProperty Name="id_doc" ColumnName="id_doc" />
+                <ScalarProperty Name="id_detail_accident" ColumnName="id_detail_accident" />
+                <ScalarProperty Name="id_type_suivi" ColumnName="id_type_suivi" />
+                <ScalarProperty Name="date_saisie" ColumnName="date_saisie" />
+                <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+                <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+                <ScalarProperty Name="id_accident" ColumnName="id_accident" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suivis_Medicals">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Suivis_Medicals">
+              <MappingFragment StoreEntitySet="Suivis_Medicals">
+                <ScalarProperty Name="nbjour_arret_ouvres" ColumnName="nbjour_arret_ouvres" />
+                <ScalarProperty Name="explication" ColumnName="explication" />
+                <ScalarProperty Name="lesions" ColumnName="lesions" />
+                <ScalarProperty Name="restrictions" ColumnName="restrictions" />
+                <ScalarProperty Name="id_accident" ColumnName="id_accident" />
+                <ScalarProperty Name="cote_lesion" ColumnName="cote_lesion" />
+                <ScalarProperty Name="cause" ColumnName="cause" />
+                <ScalarProperty Name="siege_lesion" ColumnName="siege_lesion" />
+                <ScalarProperty Name="nature_lesion" ColumnName="nature_lesion" />
+                <ScalarProperty Name="date_renou" ColumnName="date_renou" />
+                <ScalarProperty Name="date_visite" ColumnName="date_visite" />
+                <ScalarProperty Name="nbjour_arret" ColumnName="nbjour_arret" />
+                <ScalarProperty Name="date_reprise" ColumnName="date_reprise" />
+                <ScalarProperty Name="date_arret" ColumnName="date_arret" />
+                <ScalarProperty Name="id_type_suivi" ColumnName="id_type_suivi" />
+                <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+                <ScalarProperty Name="id_suivi_medical" ColumnName="id_suivi_medical" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restrictions_Medicales">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Restrictions_Medicales">
+              <MappingFragment StoreEntitySet="Restrictions_Medicales">
+                <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+                <ScalarProperty Name="date_au" ColumnName="date_au" />
+                <ScalarProperty Name="date_du" ColumnName="date_du" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id_suivi_medical" ColumnName="id_suivi_medical" />
+                <ScalarProperty Name="id_restriction" ColumnName="id_restriction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doc_Entete_Four">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Doc_Entete_Four">
+              <MappingFragment StoreEntitySet="Doc_Entete_Four">
+                <ScalarProperty Name="type_prix" ColumnName="type_prix" />
+                <ScalarProperty Name="montant_MO" ColumnName="montant_MO" />
+                <ScalarProperty Name="type_depense" ColumnName="type_depense" />
+                <ScalarProperty Name="id_type_intervention" ColumnName="id_type_intervention" />
+                <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+                <ScalarProperty Name="montant_ht" ColumnName="montant_ht" />
+                <ScalarProperty Name="date_doc" ColumnName="date_doc" />
+                <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="reference_doc" ColumnName="reference_doc" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="id_doc" ColumnName="id_doc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fournisseurs">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Fournisseurs">
+              <MappingFragment StoreEntitySet="Fournisseurs">
+                <ScalarProperty Name="OKCarburant" ColumnName="OKCarburant" />
+                <ScalarProperty Name="id_famille_fournisseur" ColumnName="id_famille_fournisseur" />
+                <ScalarProperty Name="compte_collectif" ColumnName="compte_collectif" />
+                <ScalarProperty Name="compte_auxiliaire" ColumnName="compte_auxiliaire" />
+                <ScalarProperty Name="actif" ColumnName="actif" />
+                <ScalarProperty Name="compte_client" ColumnName="compte_client" />
+                <ScalarProperty Name="carte" ColumnName="carte" />
+                <ScalarProperty Name="import" ColumnName="import" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telephone2" ColumnName="telephone2" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="pays" ColumnName="pays" />
+                <ScalarProperty Name="telecopie" ColumnName="telecopie" />
+                <ScalarProperty Name="telephone1" ColumnName="telephone1" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="code_postal" ColumnName="code_postal" />
+                <ScalarProperty Name="adresse2" ColumnName="adresse2" />
+                <ScalarProperty Name="adresse1" ColumnName="adresse1" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="code_fournisseur" ColumnName="code_fournisseur" />
+                <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipements">
+            <EntityTypeMapping TypeName="SAGA_GASQUETModel.Equipements">
+              <MappingFragment StoreEntitySet="Equipements">
+                <ScalarProperty Name="id_societe" ColumnName="id_societe" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="date_limite" ColumnName="date_limite" />
+                <ScalarProperty Name="id_controleur" ColumnName="id_controleur" />
+                <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="prix_acquisition" ColumnName="prix_acquisition" />
+                <ScalarProperty Name="date_achat" ColumnName="date_achat" />
+                <ScalarProperty Name="equipe_tempo" ColumnName="equipe_tempo" />
+                <ScalarProperty Name="actif" ColumnName="actif" />
+                <ScalarProperty Name="id_famille_equipement" ColumnName="id_famille_equipement" />
+                <ScalarProperty Name="modele" ColumnName="modele" />
+                <ScalarProperty Name="caractéristique" ColumnName="caractéristique" />
+                <ScalarProperty Name="marque" ColumnName="marque" />
+                <ScalarProperty Name="num_serie" ColumnName="num_serie" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+                <ScalarProperty Name="id_equipement" ColumnName="id_equipement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

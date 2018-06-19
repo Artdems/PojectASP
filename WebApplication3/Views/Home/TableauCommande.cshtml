@@ -1,0 +1,35 @@
+﻿@model List<WebApplication3.Models.Equipements> 
+<div id = "" style = "overflow:scroll; height:330px" >
+
+    <table class="table table-bordred table-striped tableFournisseur" id="CustomerGrid">
+
+        <thead style="position: sticky;">
+            <tr>
+
+                <th><input type="checkbox" id="checkall" /></th>
+                <th>designation</th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td><input type="checkbox" class="checkthis" onclick="supreCommand(@item.id_equipement)"/></td>
+                    <td>@item.designation</td>
+
+                </tr>
+            }
+
+
+
+
+
+        </tbody>
+
+    </table>
+
+</div>
+

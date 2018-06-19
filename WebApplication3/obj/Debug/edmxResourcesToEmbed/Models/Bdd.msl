@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BddStoreContainer" CdmEntityContainer="SAGA_GASQUETEntities1">
+    <EntitySetMapping Name="Accidents">
+      <EntityTypeMapping TypeName="Bdd.Accidents">
+        <MappingFragment StoreEntitySet="Accidents">
+          <ScalarProperty Name="id_accident" ColumnName="id_accident" />
+          <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="date_saisie" ColumnName="date_saisie" />
+          <ScalarProperty Name="id_type_suivi" ColumnName="id_type_suivi" />
+          <ScalarProperty Name="id_detail_accident" ColumnName="id_detail_accident" />
+          <ScalarProperty Name="id_doc" ColumnName="id_doc" />
+          <ScalarProperty Name="path_document" ColumnName="path_document" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Affectations">
+      <EntityTypeMapping TypeName="Bdd.Affectations">
+        <MappingFragment StoreEntitySet="Affectations">
+          <ScalarProperty Name="id_affectation" ColumnName="id_affectation" />
+          <ScalarProperty Name="date_du" ColumnName="date_du" />
+          <ScalarProperty Name="date_au" ColumnName="date_au" />
+          <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="id_equipe" ColumnName="id_equipe" />
+          <ScalarProperty Name="id_equipement" ColumnName="id_equipement" />
+          <ScalarProperty Name="chef_equipe" ColumnName="chef_equipe" />
+          <ScalarProperty Name="type_affecte" ColumnName="type_affecte" />
+          <ScalarProperty Name="id_texte" ColumnName="id_texte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Controles_Vehicules">
+      <EntityTypeMapping TypeName="Bdd.Controles_Vehicules">
+        <MappingFragment StoreEntitySet="Controles_Vehicules">
+          <ScalarProperty Name="id_controle" ColumnName="id_controle" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="date_obtention" ColumnName="date_obtention" />
+          <ScalarProperty Name="organisme" ColumnName="organisme" />
+          <ScalarProperty Name="cout" ColumnName="cout" />
+          <ScalarProperty Name="date_recyclage" ColumnName="date_recyclage" />
+          <ScalarProperty Name="organisme_recyclage" ColumnName="organisme_recyclage" />
+          <ScalarProperty Name="cout_recyclage" ColumnName="cout_recyclage" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="tri" ColumnName="tri" />
+          <ScalarProperty Name="id_valeur_liste" ColumnName="id_valeur_liste" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Details_Accidents">
+      <EntityTypeMapping TypeName="Bdd.Details_Accidents">
+        <MappingFragment StoreEntitySet="Details_Accidents">
+          <ScalarProperty Name="id_detail_accident" ColumnName="id_detail_accident" />
+          <ScalarProperty Name="jour_semaine" ColumnName="jour_semaine" />
+          <ScalarProperty Name="date_accident" ColumnName="date_accident" />
+          <ScalarProperty Name="heure" ColumnName="heure" />
+          <ScalarProperty Name="horraire_jour" ColumnName="horraire_jour" />
+          <ScalarProperty Name="lieu" ColumnName="lieu" />
+          <ScalarProperty Name="circonstances" ColumnName="circonstances" />
+          <ScalarProperty Name="siege_lesions" ColumnName="siege_lesions" />
+          <ScalarProperty Name="nature_lesions" ColumnName="nature_lesions" />
+          <ScalarProperty Name="hopital" ColumnName="hopital" />
+          <ScalarProperty Name="id_consequences_accident" ColumnName="id_consequences_accident" />
+          <ScalarProperty Name="id_temoin" ColumnName="id_temoin" />
+          <ScalarProperty Name="temoins" ColumnName="temoins" />
+          <ScalarProperty Name="rapport_police" ColumnName="rapport_police" />
+          <ScalarProperty Name="cause_tiers" ColumnName="cause_tiers" />
+          <ScalarProperty Name="nom_tiers" ColumnName="nom_tiers" />
+          <ScalarProperty Name="arret_travail" ColumnName="arret_travail" />
+          <ScalarProperty Name="assurance_tiers" ColumnName="assurance_tiers" />
+          <ScalarProperty Name="id_type_constat_accident" ColumnName="id_type_constat_accident" />
+          <ScalarProperty Name="date_constat" ColumnName="date_constat" />
+          <ScalarProperty Name="heure_constat" ColumnName="heure_constat" />
+          <ScalarProperty Name="constat_employeur" ColumnName="constat_employeur" />
+          <ScalarProperty Name="constat_preposes" ColumnName="constat_preposes" />
+          <ScalarProperty Name="constat_victime" ColumnName="constat_victime" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="rapport_parqui" ColumnName="rapport_parqui" />
+          <ScalarProperty Name="autre_victime" ColumnName="autre_victime" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="activite" ColumnName="activite" />
+          <ScalarProperty Name="path_document" ColumnName="path_document" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doc_Lignes_Four">
+      <EntityTypeMapping TypeName="Bdd.Doc_Lignes_Four">
+        <MappingFragment StoreEntitySet="Doc_Lignes_Four">
+          <ScalarProperty Name="id_ligne" ColumnName="id_ligne" />
+          <ScalarProperty Name="id_doc" ColumnName="id_doc" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="id_famille" ColumnName="id_famille" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="quantite" ColumnName="quantite" />
+          <ScalarProperty Name="prix_unitaire" ColumnName="prix_unitaire" />
+          <ScalarProperty Name="montant" ColumnName="montant" />
+          <ScalarProperty Name="id_equipement" ColumnName="id_equipement" />
+          <ScalarProperty Name="date_du" ColumnName="date_du" />
+          <ScalarProperty Name="date_au" ColumnName="date_au" />
+          <ScalarProperty Name="kilometre" ColumnName="kilometre" />
+          <ScalarProperty Name="kilometres_parcourus" ColumnName="kilometres_parcourus" />
+          <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Familles_Vehicules">
+      <EntityTypeMapping TypeName="Bdd.Familles_Vehicules">
+        <MappingFragment StoreEntitySet="Familles_Vehicules">
+          <ScalarProperty Name="id_famille_vehicule" ColumnName="id_famille_vehicule" />
+          <ScalarProperty Name="code_famille_vehicule" ColumnName="code_famille_vehicule" />
+          <ScalarProperty Name="libelle_famille_vehicules" ColumnName="libelle_famille_vehicules" />
+          <ScalarProperty Name="actif" ColumnName="actif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restrictions_Medicales">
+      <EntityTypeMapping TypeName="Bdd.Restrictions_Medicales">
+        <MappingFragment StoreEntitySet="Restrictions_Medicales">
+          <ScalarProperty Name="id_restriction" ColumnName="id_restriction" />
+          <ScalarProperty Name="id_suivi_medical" ColumnName="id_suivi_medical" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="date_du" ColumnName="date_du" />
+          <ScalarProperty Name="date_au" ColumnName="date_au" />
+          <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suivis_Medicals">
+      <EntityTypeMapping TypeName="Bdd.Suivis_Medicals">
+        <MappingFragment StoreEntitySet="Suivis_Medicals">
+          <ScalarProperty Name="id_suivi_medical" ColumnName="id_suivi_medical" />
+          <ScalarProperty Name="id_personnel" ColumnName="id_personnel" />
+          <ScalarProperty Name="id_type_suivi" ColumnName="id_type_suivi" />
+          <ScalarProperty Name="date_arret" ColumnName="date_arret" />
+          <ScalarProperty Name="date_reprise" ColumnName="date_reprise" />
+          <ScalarProperty Name="nbjour_arret" ColumnName="nbjour_arret" />
+          <ScalarProperty Name="date_visite" ColumnName="date_visite" />
+          <ScalarProperty Name="date_renou" ColumnName="date_renou" />
+          <ScalarProperty Name="nature_lesion" ColumnName="nature_lesion" />
+          <ScalarProperty Name="siege_lesion" ColumnName="siege_lesion" />
+          <ScalarProperty Name="cause" ColumnName="cause" />
+          <ScalarProperty Name="cote_lesion" ColumnName="cote_lesion" />
+          <ScalarProperty Name="id_accident" ColumnName="id_accident" />
+          <ScalarProperty Name="restrictions" ColumnName="restrictions" />
+          <ScalarProperty Name="lesions" ColumnName="lesions" />
+          <ScalarProperty Name="explication" ColumnName="explication" />
+          <ScalarProperty Name="nbjour_arret_ouvres" ColumnName="nbjour_arret_ouvres" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicules">
+      <EntityTypeMapping TypeName="Bdd.Vehicules">
+        <MappingFragment StoreEntitySet="Vehicules">
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="num_interne" ColumnName="num_interne" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="immat" ColumnName="immat" />
+          <ScalarProperty Name="Num_serie" ColumnName="Num_serie" />
+          <ScalarProperty Name="compteur_heure" ColumnName="compteur_heure" />
+          <ScalarProperty Name="compteur_KM" ColumnName="compteur_KM" />
+          <ScalarProperty Name="date_compteur" ColumnName="date_compteur" />
+          <ScalarProperty Name="date_heure" ColumnName="date_heure" />
+          <ScalarProperty Name="marque" ColumnName="marque" />
+          <ScalarProperty Name="caracteristique" ColumnName="caracteristique" />
+          <ScalarProperty Name="modele" ColumnName="modele" />
+          <ScalarProperty Name="num_analystique" ColumnName="num_analystique" />
+          <ScalarProperty Name="id_famille_vehicule" ColumnName="id_famille_vehicule" />
+          <ScalarProperty Name="actif" ColumnName="actif" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="dateEntree" ColumnName="dateEntree" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="valeur_acquisition" ColumnName="valeur_acquisition" />
+          <ScalarProperty Name="num_facture" ColumnName="num_facture" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="date_sortie" ColumnName="date_sortie" />
+          <ScalarProperty Name="id_societe" ColumnName="id_societe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicules_Compteurs">
+      <EntityTypeMapping TypeName="Bdd.Vehicules_Compteurs">
+        <MappingFragment StoreEntitySet="Vehicules_Compteurs">
+          <ScalarProperty Name="id_compteur" ColumnName="id_compteur" />
+          <ScalarProperty Name="id_vehicule" ColumnName="id_vehicule" />
+          <ScalarProperty Name="type_compteur" ColumnName="type_compteur" />
+          <ScalarProperty Name="date_compteur" ColumnName="date_compteur" />
+          <ScalarProperty Name="val_compteur" ColumnName="val_compteur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
